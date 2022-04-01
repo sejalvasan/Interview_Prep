@@ -1,26 +1,39 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
         
-        int i=0;
-        while(i<nums.length){
+        int n = nums.length;
+        
+        for(int i=0;i<n;i++){
+            
+            //already in correct pos
+            if(i+1 == nums[i])
+                continue;
+            
+            //out of range
+            if(nums[i]<1 || nums[i]>n)
+                continue;
+            
+            int idx =i;
             int correct = nums[i]-1;
-            if(nums[i]>0 && nums[i]<=nums.length && nums[i]!=nums[correct])
-                swap(i,correct,nums);
-            else
-                i++;
+            
+            //handling duplicacy
+            if(nums[idx]==nums[correct])
+            continue;           
+            
+            int temp = nums[idx];
+            nums[idx] = nums[correct];
+            nums[correct] = temp;
+            i--;
+            
         }
-        
-        for(int j=0;j<nums.length;j++){
-            if(nums[j]!=j+1)
-                return j+1;
-        }
-        return nums.length+1;
-        
+    
+    int ans = -1;
+    
+    for(int i =0;i<n;i++){
+        if(nums[i]!=i+1)
+            return i+1;
     }
-        
-        public static void swap(int i, int j, int[]arr){
-            int temp = arr[i];
-            arr[i]=arr[j];
-            arr[j]=temp;
-        }
+    
+    return n+1;
+}
 }
