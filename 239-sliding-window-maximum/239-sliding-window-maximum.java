@@ -8,7 +8,7 @@ class Solution {
         premax[0]=nums[0];
         sufmax[n-1]=nums[n-1];
         
-        for(int i=0;i<n;i++){
+        for(int i=1;i<n;i++){
             if(i%k==0)
                 premax[i]=nums[i];
             else
