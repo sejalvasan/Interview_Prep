@@ -6,7 +6,7 @@ class Solution {
 			for (int j = num2.length() - 1; j >= 0; j--) {
 
 				int idx1 = i + j;
-				int idx2 = i + j + 1;
+				int idx2 = i + j + 1; //carry
 
 				int val = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
 
@@ -24,7 +24,7 @@ class Solution {
 		StringBuilder sb = new StringBuilder();
 
 		for (int i = 0; i < ans.length; i++) {
-			if (sb.length() == 0 && ans[i] == 0) {
+			if (sb.length() == 0 && ans[i] == 0) { //trailing zeroes
 				continue;
 			}
 
