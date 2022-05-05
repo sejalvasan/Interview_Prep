@@ -91,8 +91,8 @@ class Solution {
           
           // Finding the stack with maximum sum and
           // removing its top element.
-          if (sum1 >= sum2 && sum1 >= sum3)
-             sum1 -= stack1[top1++];
+          if (sum1 >= sum2 && sum1 >= sum3){
+             sum1 -= stack1[top1];top1++;}
           else if (sum2 >= sum1 && sum2 >= sum3)
              sum2 -= stack2[top2++];
           else if (sum3 >= sum2 && sum3 >= sum1)
