@@ -38,14 +38,12 @@ class Solution {
                     
                     if(row>=0 && col>=0 && row<grid.length && col<grid[0].length && grid[row][col]==0 ){
                         q.add(new Pair(row,col));
-                       // zeroCount--;
                         grid[row][col]=1;
                     }
                 }
             }
         }
-        // if(zeroCount>0)
-        //     return -1;
+    
         
         return level;
     }
