@@ -43,12 +43,13 @@ class Solution {
     }
     
    static void dfs(ArrayList<ArrayList<Integer>> M, boolean[] visited, int i)
-    {
+    {   
+        visited[i] = true;
+    
         for (int j = 0; j < M.size(); j++)
         {
             if (i!=j && M.get(i).get(j) == 1 && visited[j] == false)
             {
-                visited[j] = true;
                 dfs(M, visited, j);
             }
         }
