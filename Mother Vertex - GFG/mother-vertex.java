@@ -34,7 +34,6 @@ class GFG
 
 class Solution
 {
- //   static int count =0;
     //Function to find a Mother Vertex in the Graph.
     public int findMotherVertex(int V, ArrayList<ArrayList<Integer>>adj)
     {
@@ -50,8 +49,7 @@ class Solution
         
         dfs2(adj,vis,pot_ans);
         
-        // if(count==V)
-        // return pot_ans+1;
+      
 for(int i =0;i<V;i++){
     if(vis[i]==false)
     return -1;
@@ -71,7 +69,7 @@ for(int i =0;i<V;i++){
     public void dfs2(ArrayList<ArrayList<Integer>>adj, 
     boolean[]vis,int pot_ans){
         vis[pot_ans]=true;
-             //   count++;
+           
 
         for(int nbr: adj.get(pot_ans)){
             if(vis[nbr]==false)
