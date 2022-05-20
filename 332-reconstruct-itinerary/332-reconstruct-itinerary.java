@@ -21,6 +21,7 @@ class Solution {
             String nbr = nbrs.remove();
             dfs(nbr);
         }
+        //backtrack while adding result,somewhat like topo
         ans.addFirst(src);
     }
 }
