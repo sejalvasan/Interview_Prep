@@ -14,16 +14,18 @@ class Solution {
         }
         return count;
     }
+    static int[][]dir = new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
      public void dfs(char[][] grid,boolean[][] visited, int i, int j){
          int m =grid.length;
          int n = grid[0].length;
-         if(i<0 || j<0 || i>=m || j>=n || visited[i][j] || grid[i][j] == '0') return;
-        visited[i][j] = true;
-        
-        dfs(grid,visited,i, j-1);
-        dfs(grid,visited,i, j+1);
-        dfs(grid,visited,i+1, j);
-        dfs(grid,visited,i-1, j);
-    }
-    
+         for(int k=0;k<4;k++){
+             int newr = i + dir[k][0];
+             int newc = j+ dir[k][1];
+      if(newr<0 || newc<0 || newr>=m || newc>=n || visited[newr][newc] || grid[newr][newc] == '0') 
+           continue;
+             
+        visited[newr][newc] = true;
+             dfs(grid,visited, newr,newc);
+         }
+     }
 }
