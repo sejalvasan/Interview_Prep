@@ -30,6 +30,8 @@ Math.abs(grid[rowdash][coldash])!=color)
                 dfs(grid,rowdash,coldash,color);
             }
         }
+        
+        //backtrack
         //dont color the one which has all around elements
         if(count==4){
             grid[row][col]=color;
