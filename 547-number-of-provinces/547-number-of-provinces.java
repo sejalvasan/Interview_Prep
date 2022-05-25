@@ -15,7 +15,7 @@ class Solution {
     
     public static void dfs(int[][]isConnected, boolean[]vis, int node){
         for(int j=0;j<isConnected.length;j++){
-            if(isConnected[node][j]==1 && node!=j && vis[j]==false){
+            if(isConnected[node][j]==1 && vis[j]==false){
                 vis[j]=true;
                 dfs(isConnected,vis,j);
             }
