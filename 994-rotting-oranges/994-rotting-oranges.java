@@ -1,6 +1,4 @@
-
-class Solution {
-    class Pair{
+class Pair{
     int x;
     int y;
     Pair(int x, int y){
@@ -8,48 +6,52 @@ class Solution {
         this.y =y;
     }
 }
+class Solution {
     public int orangesRotting(int[][] grid) {
         Queue<Pair> q = new LinkedList<>();
+        int n = grid.length;
+        int m = grid[0].length;
         
-        int c1=0;
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[0].length;j++){
-                if(grid[i][j]==2)
+        int count =0;
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(grid[i][j]==2){
                     q.add(new Pair(i,j));
-                else if(grid[i][j]==1)
-                    c1++;
+                }else if(grid[i][j]==1)
+                    count++;
             }
         }
-        if(c1==0)
-            return 0;
-
-     int dir[][] =new int[][] {{1,0},{0,1},{-1,0},{0,-1}};
         
-        int level=-1;
-        while(q.size()>0){
+        if(count == 0)
+            return 0;
+        
+        int[][]dirs = new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
+        int level = -1;
+        
+        while(!q.isEmpty()){
             int size = q.size();
-               level++;
-
             while(size-->0){
                 Pair rem = q.remove();
                 for(int i=0;i<4;i++){
-                int row = rem.x+dir[i][0];
-                int col = rem.y+dir[i][1];
-                    
-                    if(row>=0 && col>=0 && row<grid.length && col<grid[0].length && grid[row][col]==1){
-                        q.add(new Pair(row,col));
-                        grid[row][col]=0;
-                        c1--;
-                    }
-                    
-                }
+                int r = rem.x + dirs[i][0];
+                int c = rem.y + dirs[i][1];
+                
+                
+                if(r<0 || c<0 || r>=n || c>=m || grid[r][c]==2 || grid[r][c]==0)
+                    continue;
+                
+                count--;
+                grid[r][c]=2;
+                q.add(new Pair(r,c));
+                
             }
+            }
+            level++;
         }
         
-        
-        if(c1!=0)
+        if(count!=0)
             return -1;
-        
         return level;
     }
 }
