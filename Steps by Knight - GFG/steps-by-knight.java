@@ -28,62 +28,82 @@ class GFG
 // } Driver Code Ends
 
 
+// 
+class Pair{
+    int x, y;
+    
+    Pair(int a, int b){
+        x = a;
+        y = b;
+    }
+}
+
 class Solution
 {
+    int ans;
+    int dir[][] = {{-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}, {-2, -1}};
     //Function to find out minimum steps Knight needs to reach target position.
-     boolean isValid(int x, int y, int N){
-		return (x >=0 && x < N && y >=0 && y < N);
-	}
-	
     public int minStepToReachTarget(int KnightPos[], int TargetPos[], int N)
     {
-        //to make it 0 based
-        KnightPos[0]--;
-		KnightPos[1]--;
-		TargetPos[0]--;
-		TargetPos[1]--;
-		
-		
-		// x and y direction, where a knight can move
-        int dx[] = { -2, -1, 1, 2, -2, -1, 1, 2 };
-        int dy[] = { -1, -2, -2, -1, 1, 2, 2, 1 };
+        // Code here
+        ans = Integer.MAX_VALUE;
+        boolean[][] vis = new boolean[N+1][N+1]; // one based indexing
         
-		boolean vis[][] = new boolean[N][N];
-		
-		Queue<ArrayList<Integer>> q = new LinkedList<>(); 
-		ArrayList<Integer> temp = new ArrayList<>();
-		temp.add(KnightPos[0]);
-		temp.add(KnightPos[1]);
-		temp.add(0);
-		q.add(temp);
-		
-		vis[KnightPos[0]][KnightPos[1]] = true;
-		
-		while(!q.isEmpty())
-		{
-		    ArrayList<Integer> temp2 = q.poll();
-			int x = temp2.get(0);
-			int y = temp2.get(1);
-			int steps = temp2.get(2);
-			
-			if(x == TargetPos[0] && y == TargetPos[1])
-				return steps;
-				
-			for(int i=0; i<8; i++)
-			{
-				int n_x = x + dx[i];
-				int n_y = y + dy[i];
-				if(isValid(n_x, n_y, N) && !vis[n_x][n_y])
-				{
-				    ArrayList<Integer> temp1 = new ArrayList<>();
-            		temp1.add(n_x);
-            		temp1.add(n_y);
-            		temp1.add(steps+1);
-					q.add(temp1);
-					vis[n_x][n_y] = true;
-				}
-			}
-		}
-		return -1;
+        // BACKTRACKING SOL
+        // WORKING - But took too long
+        // minStepToReachTarget(KnightPos[0], KnightPos[1], TargetPos, N, vis, 0);
+        
+        // GRAPHS - BFS
+        // Strategy: Add nodes at distance 1 the all nodes at distance 2, ..3
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(KnightPos[0], KnightPos[1]));
+        int level = 0;
+        while(!q.isEmpty()){
+            int size = q.size();
+            while(size-->0){
+                Pair fn = q.remove();
+                if(fn.x == TargetPos[0] && fn.y == TargetPos[1]){
+                    return level;
+                }
+                
+                if(vis[fn.x][fn.y]) continue;
+                
+                vis[fn.x][fn.y] = true;
+                
+                for(int k = 0; k < 8; k++){
+                    int row = fn.x + dir[k][0];
+                    int col = fn.y + dir[k][1];
+                    if(row < 0 || col < 0 || row > N || col > N || vis[row][col]) continue;
+                    q.add(new Pair(row, col));
+                }
+            }
+            level++; 
+        }
+        return -1;
     }
+    
+    // public void minStepToReachTarget(int i, int j, int TargetPos[], int N, boolean vis[][], int ssf)
+    // {
+    //     // Code here
+    //     if(i == TargetPos[0] && j == TargetPos[1]){
+    //         if(ssf < ans) ans = ssf;
+    //         return;
+    //     }
+        
+    //     //valid
+    //     if(i < 0 || j < 0 || i > N || j > N || vis[i][j]) return;
+        
+    //     vis[i][j] = true;
+        
+    //     // future
+    //     for(int k = 0; k < 8; k++){
+    //         int row = i + dir[k][0];
+    //         int col = j + dir[k][1];
+    //         minStepToReachTarget(row, col, TargetPos, N, vis, ssf + 1);
+    //     }
+        
+    //     // backtrack
+    //     vis[i][j] = false;
+        
+    // }
 }
