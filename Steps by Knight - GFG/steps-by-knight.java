@@ -27,8 +27,59 @@ class GFG
 }
 // } Driver Code Ends
 
+// class Pair{
+//     int x;
+//     int y;
+//     Pair(int x, int y){
+//         this.x =x;
+//         this.y =y;
+//     }
+// }
+// class Solution
+// {
+//     static int[][]dirs = new int[][]{{1,2},{2,1},{-1,2},{2,-1},{1,-2},{-2,1}
+//     ,{-1,-2},{-2,-1}};
+//     public int minStepToReachTarget(int KnightPos[], int TargetPos[], int N)
+//     {
+//         // Code here
+//         //0 based indexing
+//         KnightPos[0]--;
+// 		KnightPos[1]--;
+// 		TargetPos[0]--;
+// 		TargetPos[1]--;
+//         Queue<Pair> q = new LinkedList<>();
+//         int steps =0;
+//         q.add(new Pair(KnightPos[0],TargetPos[1]));
+//         boolean[][]vis = new boolean[N][N];
+//         int s1=KnightPos[0];
+//         int s2 = KnightPos[1];
+//         vis[s1][s2]=true;
+        
+        
+//         while(!q.isEmpty()){
+//             int size = q.size();
+//             while(size-->0){
+//                 Pair rem = q.remove();
+//                 if(rem.x == TargetPos[0] && rem.y == TargetPos[1])
+//                 return steps;
+                
+//                 for(int i=0;i<8;i++){
+//                     int r = rem.x+dirs[i][0];
+//                     int c = rem.y+dirs[i][1];
+                    
+//                     if(r<0 || c<0 || r>=N || c>=N || vis[r][c]==true)
+//                     continue;
+                    
+//                     vis[r][c]=true;
+//                     q.add(new Pair(r,c));
+//                 }
+//             }
+//                  steps++;
+//         }
+//         return -1;
+//     }
+// }
 
-// 
 class Pair{
     int x, y;
     
@@ -81,29 +132,4 @@ class Solution
         }
         return -1;
     }
-    
-    // public void minStepToReachTarget(int i, int j, int TargetPos[], int N, boolean vis[][], int ssf)
-    // {
-    //     // Code here
-    //     if(i == TargetPos[0] && j == TargetPos[1]){
-    //         if(ssf < ans) ans = ssf;
-    //         return;
-    //     }
-        
-    //     //valid
-    //     if(i < 0 || j < 0 || i > N || j > N || vis[i][j]) return;
-        
-    //     vis[i][j] = true;
-        
-    //     // future
-    //     for(int k = 0; k < 8; k++){
-    //         int row = i + dir[k][0];
-    //         int col = j + dir[k][1];
-    //         minStepToReachTarget(row, col, TargetPos, N, vis, ssf + 1);
-    //     }
-        
-    //     // backtrack
-    //     vis[i][j] = false;
-        
-    // }
 }
