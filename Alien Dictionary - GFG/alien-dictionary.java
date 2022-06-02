@@ -85,7 +85,8 @@ class Solution
     public String findOrder(String [] words, int N, int K)
     {
         // Write your code here
-        HashMap<Character, HashSet<Character>>map = new HashMap<>(); // char & its neigh
+        HashMap<Character, HashSet<Character>>map = new HashMap<>();
+        // char & its neigh
         HashMap<Character, Integer> inDegree = new HashMap<>();
         
         for(String str: words){
@@ -104,7 +105,7 @@ class Solution
                 char ch2= next.charAt(j);
                 
                 if(ch1!=ch2){
-                    //put ch2 correspinding to ch1's graph and update indegree of ch2
+       //put ch2 correspinding to ch1's graph and update indegree of ch2
                 HashSet<Character> set = new HashSet<>();
                 if(map.containsKey(ch1)==true){
                     set =map.get(ch1);
