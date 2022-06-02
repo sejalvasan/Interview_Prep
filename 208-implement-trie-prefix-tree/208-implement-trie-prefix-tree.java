@@ -1,7 +1,7 @@
 class Trie {
 
-    private TrieNode root;
-    private class TrieNode{
+     TrieNode root;
+     class TrieNode{
         private TrieNode[]children;
         private boolean isWord;
         
