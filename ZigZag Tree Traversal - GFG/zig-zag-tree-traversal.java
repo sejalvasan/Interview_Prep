@@ -126,7 +126,7 @@ class GFG
 	ArrayList<Integer> zigZagTraversal(Node root)
 	{
 	    //Add your code here.
-	    int level =1;
+	    int level =0;
 	    Stack<Node> ms = new Stack<>();
 	    Stack<Node> ss = new Stack<>();
 	    ArrayList<Integer> res = new ArrayList<>();
@@ -140,7 +140,7 @@ class GFG
 	        Node curr = ms.pop();
 	        res.add(curr.data);
 	        
-	        if(level%2==1){
+	        if(level%2==0){
 	            if(curr.left!=null) ss.add(curr.left);
 	            if(curr.right!=null) ss.add(curr.right);
 	        }else{
