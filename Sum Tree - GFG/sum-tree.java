@@ -125,7 +125,8 @@ class Solution
 
 int solve(Node node){
     if(node==null) return 0;
-    if(node.left==null && node.right==null) return node.data;
+    //as 0+0  from null will not be equal to leaf
+    if(node.left==null && node.right==null) return node.data; 
     if (f==false) return 0;
     int a = solve(node.left);
     int b =solve(node.right);
