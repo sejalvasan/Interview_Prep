@@ -30,21 +30,45 @@ class Solution {
 //     }
         
         List<Integer> res = new ArrayList<>();
-        Stack<TreeNode> st = new Stack<>();
-        TreeNode node = root;
-        while(true){
-          if(node!=null){
-              st.add(node);
-              node= node.left;
-          }else{
-              if(st.isEmpty())
-                  break;
-              else{
-                  node = st.pop();
-                  res.add(node.val);
-                  node = node.right;
+        // Stack<TreeNode> st = new Stack<>();
+        // TreeNode node = root;
+        // while(true){
+        //   if(node!=null){
+        //       st.add(node);
+        //       node= node.left;
+        //   }else{
+        //       if(st.isEmpty())
+        //           break;
+        //       else{
+        //           node = st.pop();
+        //           res.add(node.val);
+        //           node = node.right;
+        //       }
+        //   }
+        // }
+        // return res;
+        
+        while(root!=null){
+          if(root.left == null){
+              res.add(root.val);
+              root = root.right;
+          }  else{
+              TreeNode iop=root.left;
+              
+              while(iop.right!=null && iop.right!=root)
+                  iop=iop.right;
+              
+              if(iop.right!=root){
+                  //not processed
+                  iop.right=root; //making thread
+                  root =root.left;
+              }else{
+                  //already processed
+                  iop.right = null;
+                  res.add(root.val);
+                  root=root.right;
               }
-          }
+          } 
         }
         return res;
 }
