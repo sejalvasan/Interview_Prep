@@ -115,12 +115,24 @@ class Solution
     public static int maxPathSum(Node root)
     {
         //code here
-        if(root ==null)
-        return 0;
+        // if(root ==null)
+        // return 0;
         
-        int lsum = maxPathSum(root.left);
-        int rsum = maxPathSum(root.right);
+        // int lsum = maxPathSum(root.left);
+        // int rsum = maxPathSum(root.right);
         
-        return Math.max(lsum,rsum)+root.data;
+        // return Math.max(lsum,rsum)+root.data;
+        
+             if(root.left!=null && root.right!=null){
+              int l = maxPathSum(root.left);
+              int r = maxPathSum(root.right);
+              return Math.max(l,r)+root.data;
+          }else if(root.left!=null)
+          return maxPathSum(root.left)+root.data;
+          else if(root.right!=null)
+          return maxPathSum(root.right)+root.data;
+          else
+          return root.data;
     }
 }
+ 
