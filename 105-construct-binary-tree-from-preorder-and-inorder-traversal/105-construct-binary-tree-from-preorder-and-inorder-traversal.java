@@ -13,6 +13,8 @@
  *     }
  * }
  */
+
+
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -34,8 +36,8 @@ class Solution {
         int index = map.get(node.val);
         int count = index - inlo;
         
-        node.left=construct(prelo+1,prelo+count, inlo,inlo+count,preorder,map);
-        node.right=construct(prelo+1+count,prehi,index+1,inhi,preorder,map);
+      node.left = construct(prelo+1,prelo+count,inlo,inlo+count,preorder,map);
+      node.right = construct(prelo+1+count,prehi,index+1,prehi,preorder,map);
         
         return node;
     }
