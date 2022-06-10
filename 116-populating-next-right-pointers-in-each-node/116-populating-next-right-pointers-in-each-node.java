@@ -20,6 +20,7 @@ class Node {
     }
 };
 */
+//SC =O(1)
 
 class Solution {
     public Node connect(Node root) {
