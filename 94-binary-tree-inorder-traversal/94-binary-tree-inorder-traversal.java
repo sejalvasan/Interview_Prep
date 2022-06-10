@@ -48,28 +48,29 @@ class Solution {
         // }
         // return res;
         
-        while(root!=null){
-          if(root.left == null){
-              res.add(root.val);
-              root = root.right;
-          }  else{
-              TreeNode iop=root.left;
-              
-              while(iop.right!=null && iop.right!=root)
-                  iop=iop.right;
-              
-              if(iop.right!=root){
-                  //not processed
-                  iop.right=root; //making thread
-                  root =root.left;
-              }else{
-                  //already processed
-                  iop.right = null;
-                  res.add(root.val);
-                  root=root.right;
-              }
-          } 
-        }
+       while(root!=null){
+           if(root.left==null){
+               res.add(root.val);
+               root = root.right;
+           }else{
+               TreeNode iop = root.left;
+               
+               while(iop.right!=null && iop.right!=root){
+                   iop= iop.right;
+               }
+               //not processed
+               if(iop.right==null){
+                   iop.right = root;
+                   root = root.left;
+               }
+               
+               if(iop.right==root){
+                   iop.right = null;
+                   res.add(root.val);
+                   root = root.right;
+               }
+           }
+       }
         return res;
 }
 }
