@@ -123,22 +123,26 @@ class GfG
       return null;
 
     Node root = new Node(levelOrder[0]);
-
+    if(levelOrder.length==1)
+    return root;
+    
     int idx = isi;
-    while (levelOrder[0] != inorder[idx])
+    while (root.data != inorder[idx])
       idx++;
 
     HashSet<Integer> s = new HashSet<>();
     for (int i = isi; i < idx; i++)
       s.add(inorder[i]);
 
-    int n = iei - isi + 1;
-    int[] lLevel = new int[s.size()]; // Left
-    int[] rLevel = new int[n - s.size()]; // Right
+    //int n = iei - isi + 1;
+    int[] lLevel = new int[idx-isi]; // Left
+    int[] rLevel = new int[iei- idx]; // Right
     int li = 0, ri = 0;
-    for (int i = 1; i < n; i++) {
-      if (s.contains(levelOrder[i]))
+    for (int i = 1; i < levelOrder.length; i++) {
+      if (s.contains(levelOrder[i]) && s.size()!=0){
         lLevel[li++] = levelOrder[i];
+        s.remove(levelOrder[i]);
+      }
       else
         rLevel[ri++] = levelOrder[i];
     }
