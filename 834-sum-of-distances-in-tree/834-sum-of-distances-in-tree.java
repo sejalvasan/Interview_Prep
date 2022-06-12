@@ -4,6 +4,7 @@ class Solution {
         int []nodes = new int[n];
         
         //making of tree/graph
+        //use hashset or arraylist
         HashSet<Integer>[] graph = new HashSet[n];
         for(int i=0;i<n;i++){
             graph[i]=new HashSet<>();
