@@ -35,7 +35,7 @@ class Solution {
         
         if(map.containsKey(level)){
             p=map.get(level);
-            p.max =Math.max(p.max,idx);
+            p.max = idx;
         }else{
             p =new Pair();
             p.min = idx;
