@@ -114,7 +114,8 @@ class Node
 }
 */
 class Solution
-{ boolean f=true;
+{
+     boolean f=true;
     
     boolean isSumTree(Node node)  
     { 
