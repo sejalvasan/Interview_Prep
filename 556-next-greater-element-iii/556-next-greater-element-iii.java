@@ -9,7 +9,7 @@ class Solution {
             return -1;
         while(j>=0 && arr[j]<=arr[i])
             j--;
-        if(i>=0)
+      //  if(i>=0)
             swap(arr,i,j);
         
         reverse(arr, i+1, l-1);
