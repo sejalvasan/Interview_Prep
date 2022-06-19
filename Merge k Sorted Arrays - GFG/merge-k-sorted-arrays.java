@@ -54,7 +54,7 @@ class Solution
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         ArrayList<Integer> ans = new ArrayList<>();
         
-        for(int i=0;i<arr.length;i++){
+        for(int i=0;i<K;i++){
             pq.add(new Pair(i,0,arr[i][0]));
         }
         
