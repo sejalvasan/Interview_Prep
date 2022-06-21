@@ -126,25 +126,24 @@ class Tree
      public ArrayList<Integer> diagonal(Node root)
       {
            //add your code here.
-           ArrayList<Integer> ans = new ArrayList<>();
-           
-           if(root == null)
-           return ans;
-           
+           ArrayList<Integer> res = new ArrayList<>();
            Queue<Node> q = new LinkedList<>();
-           q.add(root);
            
+           q.add(root);
+          
            while(!q.isEmpty()){
-               Node temp = q.remove();
+               Node curr = q.remove();
                
-               while(temp!=null){
-                   ans.add(temp.data);
-                   if(temp.left!=null)
-                   q.add(temp.left);
+               while(curr!=null){
+                   res.add(curr.data);
                    
-                   temp = temp.right;
+                   if(curr.left!=null)
+                   q.add(curr.left);
+                   
+                   curr = curr.right;
                }
+           
            }
-           return ans;
+           return res;
       }
 }
