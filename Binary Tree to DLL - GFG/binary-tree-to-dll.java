@@ -154,22 +154,21 @@ class Solution
     Node bToDLL(Node root)
     {
 	//  Your code here
-	
-	//base
-	if(root==null)
+	if(root == null)
 	return null;
 	
-	//inorder types
-	bToDLL(root.left);
-	if(prev ==null) head = root;
-	else{
-	    root.left = prev;
-	    prev.right = root;
-	}
-	prev = root;
-	
-	bToDLL(root.right);
-	
-	return head;
+	  bToDLL(root.left);
+	  
+	  if(prev == null) head = root;
+	  else{
+	      prev.right = root;
+	      root.left = prev;
+	  }
+	  
+	  prev = root;
+	  
+	  bToDLL(root.right);
+	  
+	  return head;
     }
 }
