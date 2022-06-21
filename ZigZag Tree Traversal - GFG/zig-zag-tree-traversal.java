@@ -126,34 +126,31 @@ class GFG
 	ArrayList<Integer> zigZagTraversal(Node root)
 	{
 	    //Add your code here.
-	    int level =0;
-	    Stack<Node> ms = new Stack<>();
-	    Stack<Node> ss = new Stack<>();
-	    ArrayList<Integer> res = new ArrayList<>();
-	    
-	    if(root== null)
-	    return res;
-	    
-	    ms.add(root);
-	    
-	    while(ms.size()>0){
-	        Node curr = ms.pop();
-	        res.add(curr.data);
-	        
-	        if(level%2==0){
-	            if(curr.left!=null) ss.add(curr.left);
-	            if(curr.right!=null) ss.add(curr.right);
-	        }else{
-	            if(curr.right!=null) ss.add(curr.right);
-	            if(curr.left!=null) ss.add(curr.left);
-	        }
-	        
-	        if(ms.size()==0){
-	            ms = ss;
-	            ss = new Stack<>();
-	            level++;
-	        }
-	    }
-	    return res;
+	    ArrayList<Integer> ans = new ArrayList<>();
+	   Stack<Node> ms = new Stack<>();
+	   Stack<Node> ss = new Stack<>();
+	   int level =0;
+	   ms.add(root);
+	   
+	   while(!ms.isEmpty()){
+	       Node curr = ms.pop();
+	       ans.add(curr.data);
+	       
+	       if(level%2==0){
+	           if(curr.left!=null) ss.add(curr.left);
+	           if(curr.right!=null) ss.add(curr.right);
+	       }else{
+	             if(curr.right!=null) ss.add(curr.right);
+	             if(curr.left!=null) ss.add(curr.left);
+	       }
+	       
+	       if(ms.size()==0){
+	           ms = ss;
+	           ss = new Stack<>();
+	           level++;
+	       }
+	   }
+	   
+	   return ans;
 	}
 }
