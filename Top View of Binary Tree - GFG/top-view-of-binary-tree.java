@@ -140,7 +140,7 @@ class Solution
         Map<Integer, Integer> map = new TreeMap<>();
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(root,0));
-        map.put(0,root.data);
+        //map.put(0,root.data);
         
         while(!q.isEmpty()){
             Pair rem = q.remove();
@@ -158,10 +158,9 @@ class Solution
         }
     }
     ArrayList<Integer> ans = new ArrayList<>();
-     for(Map.Entry<Integer,Integer> e:map.entrySet())
-        {
-           ans.add(e.getValue());
-        }
+    for(Map.Entry<Integer,Integer> e: map.entrySet()){
+        ans.add(e.getValue());
+    }
     return ans;
 }
 }
