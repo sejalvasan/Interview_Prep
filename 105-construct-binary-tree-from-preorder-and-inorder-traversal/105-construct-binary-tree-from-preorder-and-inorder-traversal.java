@@ -37,7 +37,7 @@ class Solution {
         int count = index - inlo;
         
       node.left = construct(prelo+1,prelo+count,inlo,index-1,preorder,map);
-      node.right = construct(prelo+1+count,prehi,index+1,prehi,preorder,map);
+      node.right = construct(prelo+1+count,prehi,index+1,inhi,preorder,map);
         
         return node;
     }
