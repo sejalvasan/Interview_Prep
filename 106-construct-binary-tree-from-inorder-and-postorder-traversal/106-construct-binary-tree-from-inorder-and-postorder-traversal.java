@@ -28,11 +28,12 @@ class Solution {
             return null;
         TreeNode node = new TreeNode();
         node.val = postorder[posthi];
-        int index = map.get(node.val);
-        int count = inhi-index;
         
-        node.left = construct(inlo,index-1, postlo,posthi-count-1,postorder,map);
-        node.right = construct(index+1,inhi,posthi-count,posthi-1,postorder,map);
+        int index = map.get(node.val);
+        int count = index-inlo;
+        
+        node.left = construct(inlo,index-1, postlo,postlo+count-1,postorder,map);
+        node.right = construct(index+1,inhi,postlo+count,posthi-1,postorder,map);
         
         return node;
     }
