@@ -21,7 +21,10 @@ class Solution {
     public boolean helper(TreeNode root ,int targetSum) {
        
         if(root==null) return false;
-        if(targetSum-root.val==0 && root.left==null && root.right==null) return true;
-        return helper(root.left,targetSum-root.val) || helper(root.right,targetSum-root.val);
+        
+        if(targetSum - root.val == 0 && root.left ==null && root.right == null)
+            return true;
+        
+        return (helper(root.left,targetSum - root.val)||(helper(root.right,targetSum - root.val)));
     }
 }
