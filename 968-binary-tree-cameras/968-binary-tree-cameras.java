@@ -24,25 +24,22 @@ class Solution {
     }
     
     public int helper(TreeNode root){
-        if(root==null){
-            //covered
-            return 1;
-        } 
-         int lchild = helper(root.left);
-        int rchild = helper(root.right);
+      if(root == null){
+          return 1;   
+      }
         
-        if(lchild==-1 ||rchild ==-1){
+        int lc = helper(root.left);
+        int rc = helper(root.right);
+        
+        if(lc==-1 || rc ==-1){
             cameras++;
             return 0;
         }
         
-        if(lchild==0 || rchild ==0){
+        if(lc==0 || rc ==0){
             return 1;
         }
         
-        //now both child are covered or they need camera
-        //so i am the node which needs camera
-        
-        return -1;
+        else return -1;
     }
 }
