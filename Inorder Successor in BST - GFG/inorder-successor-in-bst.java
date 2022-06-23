@@ -125,46 +125,65 @@ class Node{
 class Solution
 {
     // returns the inorder successor of the Node x in BST (rooted at 'root')
-	public Node inorderSuccessor(Node root,Node x)
+	public Node inorderSuccessor(Node root,Node k)
          {
           //add code here.
-          boolean found = false;
-        Node succ =null;
-        Node curr = root;
+        // boolean found = false;
+        // Node succ =null;
+        // Node curr = root;
         
-        while(curr!=null){
-            if(curr.left==null){
-             //agle node tak found true ho jaayega
-             if(found==true){
-            succ=curr;
-            break;
-             }
-             if(curr ==x)
-                 found =true;
+        // while(curr!=null){
+        //     if(curr.left==null){
+        //      //agle node tak found true ho jaayega
+        //      if(found==true){
+        //     succ=curr;
+        //     break;
+        //      }
+        //      if(curr ==x)
+        //          found =true;
             
-             curr = curr.right;
-            }else{
-                Node iop = curr.left;
-                while(iop.right!=null && iop.right!=curr)
-                iop=iop.right;
+        //      curr = curr.right;
+        //     }else{
+        //         Node iop = curr.left;
+        //         while(iop.right!=null && iop.right!=curr)
+        //         iop=iop.right;
                 
-                if(iop.right==null){
-                    iop.right = curr;
-                    curr=curr.left;
-                }else{
+        //         if(iop.right==null){
+        //             iop.right = curr;
+        //             curr=curr.left;
+        //         }else{
                     
-                     if(found==true){
-                       succ=curr;
-                           break;
-                     }
-             if(curr==x)
-                 found =true;
+        //              if(found==true){
+        //               succ=curr;
+        //                   break;
+        //              }
+        //      if(curr==x)
+        //          found =true;
                     
-                    iop.right=null;
-                    curr=curr.right;
-                }
-            }
+        //             iop.right=null;
+        //             curr=curr.right;
+        //         }
+        //     }
+        // }
+        // return succ;
+        //  }
+        
+Node succ = null;
+if(root == null)
+return succ;
+if(k==null)
+return succ;
+
+while(root!=null){
+    
+    if(root.data<=k.data)
+        root = root.right;
+        else{
+            succ = root;
+            root = root.left;
         }
-        return succ;
+}
+
+return succ;
          }
 }
