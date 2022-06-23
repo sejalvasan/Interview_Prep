@@ -13,6 +13,7 @@
  *     }
  * }
  */
+
 class Solution {
     class Pair{
         long min;
