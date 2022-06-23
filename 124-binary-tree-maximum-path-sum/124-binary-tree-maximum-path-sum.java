@@ -73,7 +73,7 @@ class Solution {
 
             return rdash+node.val;
         }else{
-            if(max<node.val) max = node.val;
+           if(max<node.val) max = node.val;
         return node.val;
         }
     }
