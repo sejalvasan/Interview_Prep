@@ -27,8 +27,7 @@ class Solution {
     public void helper(TreeNode node, int level, long idx,HashMap<Integer, Pair>map){
         if(node == null)
             return;
-        
-        
+           
         Pair p = null;
         
         if(map.containsKey(level)){
@@ -41,10 +40,12 @@ class Solution {
             map.put(level,p);
         }
         
-           helper(node.left, level+1, 2*idx,map);
-        helper(node.right, level+1, 2*idx+1,map);
-        
+          
         long width =p.max - p.min +1;
         maxWidth = Math.max(maxWidth, width);
+        
+           helper(node.left, level+1, 2*idx,map);
+           helper(node.right, level+1, 2*idx+1,map);
+      
     }
 }
