@@ -14,22 +14,24 @@
  * }
  */
 class Solution {
-    int sum ;
+    int sum=0;
     public TreeNode convertBST(TreeNode root) {
-        sum=0;
+        if(root ==null)
+            return null;
         helper(root);
         return root;
     }
-    public void helper(TreeNode node){
     
-    if(node == null)
-        return;
-    
-    helper(node.right);
-    
-    node.val += sum;
-    sum = node.val;
-    
-    helper(node.left);
-}
+    public void helper(TreeNode root){
+        if(root == null)
+            return;
+        
+        helper(root.right);
+        
+        root.val += sum;
+        sum = root.val;
+        
+        helper(root.left);
+        
+    }
 }
