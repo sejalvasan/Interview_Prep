@@ -27,29 +27,29 @@ class Solution {
         
         //OPTIMISED TC = O(LOGN)^2
         
-        if(root==null)
-            return 0;
-        int lh=0;
+   if(root==null)
+       return 0;
+        
+        int lh=0, rh=0;
         TreeNode node = root.left;
         
         while(node!=null){
-            node = node.left;
             lh++;
+            node = node.left;
         }
         
-        int rh=0;
          node = root.right;
         
         while(node!=null){
-            node = node.right;
             rh++;
+            node = node.right;
         }
         
+        
         if(lh==rh){
-            int ht = lh+1;
-            return (1<< ht)-1;
-        }else{
-            return countNodes(root.left)+ countNodes(root.right)+1;
-        }
+            int h = lh+1;
+            return (1<<h)-1;
+        }else
+            return countNodes(root.left)+countNodes(root.right)+1;
     }
 }
