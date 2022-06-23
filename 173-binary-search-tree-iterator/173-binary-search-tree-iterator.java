@@ -14,7 +14,7 @@
  * }
  */
 class BSTIterator {
-    public static Stack<TreeNode> st=new Stack<>();
+Stack<TreeNode> st =new Stack<>();
     public BSTIterator(TreeNode root) {
         pushAll(root);
     }
@@ -26,7 +26,9 @@ class BSTIterator {
     }
     
     public boolean hasNext() {
-        if(st.isEmpty()) return false;
+      if(st.isEmpty())
+          return false;
+        
         return true;
     }
     
