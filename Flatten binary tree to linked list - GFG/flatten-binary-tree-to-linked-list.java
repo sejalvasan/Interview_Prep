@@ -120,7 +120,7 @@ class Solution
 		    if(cur.left==null){
 		        cur = cur.right;
 		    }
-		else
+		   else
 			{
 				Node pre = cur.left;
 				while(pre.right != null)
@@ -130,6 +130,8 @@ class Solution
 				pre.right = cur.right;
 				cur.right = cur.left;
 				cur.left = null;
+				
+				 cur = cur.right;
 			}
 		}
     }
