@@ -28,8 +28,8 @@ class Solution {
         
         helper(root.right);
         
-        root.val += sum;
-        sum = root.val;
+       sum  +=root.val; 
+    root.val=sum;
         
         helper(root.left);
         
