@@ -148,28 +148,27 @@ class Node
 
 class Solution
 {
-    	Node prev=null;
-    	Node head=null;
-    	
+    Node prev = null;
+    Node head = null;
     //Function to convert binary tree to doubly linked list and return it.
     Node bToDLL(Node root)
     {
 	//  Your code here
-	if(root==null)
+	if(root == null)
 	return null;
 	
-	bToDLL(root.left);
-	 
-		if(prev==null)head=root;
-	else{
-	    prev.right =root;
-	    root.left = prev;
-	}
-		    prev = root;
-
-	
-	bToDLL(root.right);
-	
-	return head;
+	  bToDLL(root.left);
+	  
+	  if(prev == null) head = root;
+	  else{
+	      prev.right = root;
+	      root.left = prev;
+	  }
+	  
+	  prev = root;
+	  
+	  bToDLL(root.right);
+	  
+	  return head;
     }
 }
