@@ -105,38 +105,37 @@ class Solution {
     // Return the Kth smallest element in the given BST
     public int KthSmallestElement(Node root, int K) {
         // Write your code here
-        //morris with inorder
-       
-        int count=0;
+        if(root == null)
+        return 0;
+        int count =0;
         
         while(root!=null){
-            if(root.left == null){
-                //print
+            if(root.left==null){
+                //work
                 count++;
-                if(count==K)
+                if(count == K)
                 return root.data;
-                 
-                 root = root.right;
+                
+                root = root.right;
             }else{
                 Node iop = root.left;
                 
                 while(iop.right!=null && iop.right!=root)
-                iop=iop.right;
+                iop = iop.right;
                 
-                
-                if(iop.right==null){
-                    //not processed
+                if(iop.right==null)
+                {
                     iop.right = root;
                     root = root.left;
                 }
+                
                 if(iop.right==root){
+                    //work
+                    count++;
+                    if(count==K)
+                    return root.data;
                     
-                count++;
-                if(count==K)
-                return root.data;
-                      iop.right = null;
-                   
-                    root=root.right;
+                    root = root.right;
                 }
             }
         }
