@@ -121,13 +121,6 @@ class Solution {
         int[]ans = dia(root);
         return ans[0];
     }
-     int height(Node node) 
-    {
-        // code here 
-    return node == null? 0: Math.max(height(node.left)
-        ,height(node.right))+1;
-        
-    }
     
   public int[]dia(Node node){
         if(node==null){
