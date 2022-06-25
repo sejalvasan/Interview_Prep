@@ -35,32 +35,49 @@ class Solution
     int celebrity(int M[][], int N)
     {
     	// code here 
-    	Stack<Integer> st = new Stack<>();
+    // 	Stack<Integer> st = new Stack<>();
     	
-    	for(int i=0;i<N;i++){
-    	    st.push(i);
-    	}
+    // 	for(int i=0;i<N;i++){
+    // 	    st.push(i);
+    // 	}
     	
-    	while(st.size()>=2){
-    	    int a=st.pop();
-    	    int b =st.pop();
-    	    if(M[a][b]==1){
-    	        //if a knowns b -> a isnt a celeb
-    	        st.push(b);
-    	    }else{
-    	        //if a doesn't know b -> b isnt a celeb
-    	        st.push(a);
-    	    }
-    	}
+    // 	while(st.size()>=2){
+    // 	    int a=st.pop();
+    // 	    int b =st.pop();
+    // 	    if(M[a][b]==1){
+    // 	        //if a knowns b -> a isnt a celeb
+    // 	        st.push(b);
+    // 	    }else{
+    // 	        //if a doesn't know b -> b isnt a celeb
+    // 	        st.push(a);
+    // 	    }
+    // 	}
     	
-    	int pot = st.pop();
+    // 	int pot = st.pop();
     	
-    	for(int i =0;i<N;i++){
-    	    if(i!=pot){
-    	        if(M[i][pot]==0 || M[pot][i]==1)
-    	        return -1;
-    	    }
-    	}
-    	return pot;
+    // 	for(int i =0;i<N;i++){
+    // 	    if(i!=pot){
+    // 	        if(M[i][pot]==0 || M[pot][i]==1)
+    // 	        return -1;
+    // 	    }
+    // 	}
+    // 	return pot;
+    
+    int a = 0;
+    int b = N-1;
+    
+    while(a<b){
+        if(M[a][b]==1)
+        a++;
+        else b--;
+    }
+    
+    for(int i =0;i<N;i++){
+        if(a!=i){
+            if(M[i][a]==0 || M[a][i]==1)
+            return -1;
+        }
+    }
+    return a;
     }
 }
