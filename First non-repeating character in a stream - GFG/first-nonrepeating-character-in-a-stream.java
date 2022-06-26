@@ -18,23 +18,35 @@ class GFG
     }
 }
 // } Driver Code Ends
+
+
 class Solution
 {
-    public String FirstNonRepeating(String s)
+    public String FirstNonRepeating(String A)
     {
         // code here
-       int cnt[] = new int[26];
-        Queue <Character> q = new LinkedList<>();
-        int n = s.length();
-        char ans[] = new char[n];
-        for(int i = 0; i < n; i++) {
-            char c = s.charAt(i);
-            cnt[c - 'a']++;
-            if(cnt[c - 'a'] == 1)   q.add(c);
-            while(!q.isEmpty() && cnt[q.peek() - 'a'] > 1)  q.poll();
-            if(q.isEmpty()) ans[i] = '#';
-            else    ans[i] = q.peek();
+        String ans ="";
+        int []cnt= new int[26];
+        Queue<Character> q = new LinkedList<>();
+        int n = A.length();
+        
+        for(int i=0;i<n;i++){
+            
+            char c = A.charAt(i);
+            cnt[c-'a']++;
+            
+            if(cnt[c-'a']==1)
+            q.add(c);
+            
+            while(!q.isEmpty() && cnt[q.peek()-'a']>1)
+             q.remove();
+            
+             if(q.isEmpty())
+                ans+='#';
+            
+            else
+            ans +=q.peek();
         }
-        return new String(ans);
+        return ans;
     }
 }
