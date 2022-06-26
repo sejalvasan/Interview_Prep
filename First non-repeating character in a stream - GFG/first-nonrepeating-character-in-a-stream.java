@@ -20,12 +20,11 @@ class GFG
 // } Driver Code Ends
 class Solution
 {
-    
     public String FirstNonRepeating(String s)
     {
         // code here
        int cnt[] = new int[26];
-        Queue <Character> q = new ArrayDeque<>();
+        Queue <Character> q = new LinkedList<>();
         int n = s.length();
         char ans[] = new char[n];
         for(int i = 0; i < n; i++) {
