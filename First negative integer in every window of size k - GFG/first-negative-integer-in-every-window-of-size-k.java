@@ -44,33 +44,34 @@ class GFG {
 
 class Compute {
     
-    public long[] printFirstNegativeInteger(long a[], int n, int k)
+    public long[] printFirstNegativeInteger(long A[], int N, int K)
     {
-     
-        long[] ans=new long[n-k+1];
-        int i=0,j=0,z=0;
+        long[]ans = new long[N-K+1];
+        int i=0, j=0;
+        Queue<Long> q = new LinkedList<>();
         
-        Queue<Long> q=new ArrayDeque<>();
-        
-        while(j<n){
-            if(a[j]<0){
-                q.add(a[j]);
-            }
-            if(j-i+1<k){
-                j++;
-            }else if(j-i+1==k){
-                if(q.size()!=0){
-                    ans[z++]=q.peek();
-                    if(q.peek()==a[i]){
-                        q.remove();
-                    }
-                }else{
-                    ans[z++]=0;
-                }
-                i++;
-                j++;
-                
-            }
+        while(j<N){
+          if(A[j]<0)
+          q.add(A[j]);
+          
+          if(j-i+1<K)
+          j++;
+          
+          else if(j-i+1==K){
+              if(q.isEmpty())
+              ans[i]=0;
+              
+              else if(q.peek()==A[i])
+              {
+                  ans[i]=q.peek();
+                  q.remove();
+              }
+              else
+              ans[i]=q.peek();
+              
+              i++;
+              j++;
+          }
         }
         return ans;
         
