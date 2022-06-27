@@ -113,7 +113,7 @@ class GFG
 class Node1{
     boolean isBST;
     int size;
-    int min; 
+    int min;
     int max;
     
     Node1(boolean isBST, int size, int min, int max){
@@ -123,34 +123,34 @@ class Node1{
         this.max = max;
     }
 }
+
 class Solution{
     
     // Return the size of the largest sub-tree which is also a BST
     static int largestBst(Node root)
     {
         // Write your code here
-        
         return helper(root).size;
+        
     }
     
-    static Node1 helper(Node root){
+    public static Node1 helper(Node root){
         Node1 x;
+        
         if(root == null){
-         x = new Node1(true,0,Integer.MAX_VALUE, Integer.MIN_VALUE);
-            return x;
+         x= new Node1(true, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
+         return x;
         }
         
         Node1 left = helper(root.left);
         Node1 right = helper(root.right);
         
-        if(left.isBST && right.isBST && left.max<root.data && right.min>root.data)
-        return x=new Node1(true,left.size+right.size+1,Math.min(root.data,left.min),
-        Math.max(root.data,right.max));
-        else
-        x = new Node1(false, Math.max(left.size,right.size),Integer.MIN_VALUE,Integer.MAX_VALUE);
-    
-        return x;
+    if(left.isBST && right.isBST && left.max<root.data && right.min>root.data){
+            x = new Node1(true, left.size + right.size + 1, Math.min(root.data,left.min),
+            Math.max(root.data,right.max));
+        }   
+            else x = new Node1(false, Math.max(left.size,right.size), Integer.MIN_VALUE, Integer.MAX_VALUE);
         
+        return x;
     }
-    
 }
