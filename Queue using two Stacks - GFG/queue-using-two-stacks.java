@@ -54,28 +54,51 @@ class StackQueue
     Stack<Integer> st2 = new Stack<Integer>();
 
     //Function to push an element in queue by using 2 stacks.
-    void Push(int x)
-    {
-	   // Your code here
-	   st1.push(x);
-    }
+    
+    //PUSH EFFICIENT
+    
+    // void Push(int x)
+    // {
+	   //// Your code here
+	   //st1.push(x);
+    // }
 	
     
-    //Function to pop an element from queue by using 2 stacks.
-    int Pop()
-    {
-	   // Your code here
-	   if(st1.isEmpty())
-	   return -1;
+    // //Function to pop an element from queue by using 2 stacks.
+    // int Pop()
+    // {
+	   //// Your code here
+	   //if(st1.isEmpty())
+	   //return -1;
 	   
-	   while(!st1.isEmpty())
-	       st2.push(st1.pop());
+	   //while(!st1.isEmpty())
+	   //    st2.push(st1.pop());
 	   
-	       int val = st2.pop();
+	   //    int val = st2.pop();
 	       
-	       while(!st2.isEmpty())
-	       st1.push(st2.pop());
+	   //    while(!st2.isEmpty())
+	   //    st1.push(st2.pop());
 	       
-	       return val;
-    }
+	   //    return val;
+    // }
+    
+    //pop efficient
+    
+         void Push(int x){
+             
+             while(!st1.isEmpty())
+             st2.push(st1.pop());
+             
+             st1.push(x);
+             
+             while(!st2.isEmpty())
+             st1.push(st2.pop());
+         }
+     int Pop(){
+        if(st1.isEmpty())
+        return -1;
+        
+        return st1.pop();
+     }
+
 }
