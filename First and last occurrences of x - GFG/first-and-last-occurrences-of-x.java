@@ -16,46 +16,37 @@ class GFG
     ArrayList<Long> find(long arr[], int n, int x)
     {
         // code here
-     ArrayList<Long>ans = new ArrayList<>();
+         ArrayList<Long> ans = new ArrayList<>();
         Arrays.sort(arr);
-
-        long start = search(arr, x,true,n);
-        long end = search(arr, x,false,n);
-        ans.add(start);
-        ans.add(end);
-        return ans;
+       long start = findAns(arr,n,x,true);
+       long end = findAns(arr,n,x,false);
+       
+       ans.add(start);
+       ans.add(end);
+       return ans;
     }
-    
-    int search(long arr[],int x, boolean findStart,int n){
-        int start =0;
-        int end = n-1;
-        int pot =-1;
-        while(start<=end){
-            int mid = start+(end-start)/2;
+   long findAns(long[]arr, int n,int x, boolean flag){
+        int lo =0, hi =n-1,mid;
+        long pot =-1;
+        while(lo<=hi){
+            mid = lo+(hi-lo)/2;
             
-            if(x<arr[mid]){
-                end = mid-1;
-            }else if(x>arr[mid]){
-                start=mid+1;
-            }else{
+            if(arr[mid]>x)
+            hi = mid-1;
+            else if(arr[mid]<x)
+            lo=mid+1;
+            else{
                 pot = mid;
-                if(findStart){
-                    end=mid-1;
-                }else{
-                    start = mid+1;
-                }
+                if(flag)
+                hi = mid-1;
+                else lo = mid+1;
             }
         }
-       return pot;
+        return pot;
     }
-    
 }
 
 
-
-// { Driver Code Starts.
-
-// Driver class
 
 // { Driver Code Starts.
 
