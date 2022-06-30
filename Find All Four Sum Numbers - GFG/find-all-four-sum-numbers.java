@@ -46,7 +46,8 @@ class GFG {
 class Solution {
     public ArrayList<ArrayList<Integer>> fourSum(int[] arr, int k) {
         // code here
-        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        
+   ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
         if(arr.length==0 ||arr==null)
         return ans;
         
