@@ -36,16 +36,16 @@ class Solution
     public int FindMaxSum(int arr[], int n)
     {
         // Your code here
-        int inc =arr[0];
-        int exc=0;
-        int ans=0;
-        
-        for(int i=1;i<n;i++){
-            ans=Math.max(inc,exc);
-            
-            inc =exc+arr[i];
-            exc=ans;
-        }
-        return Math.max(inc,exc);
+     int inc = arr[0];
+     int exc = 0;
+     int ans =0;
+     
+     for(int i=1;i<n;i++){
+         ans = Math.max(inc,exc);
+         
+         inc = arr[i]+exc;
+         exc = ans;
+     }
+     return Math.max(inc,exc);
     }
 }
