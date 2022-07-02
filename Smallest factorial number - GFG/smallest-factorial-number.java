@@ -34,7 +34,7 @@ class Solution
             
         int low = 0;
         int high = 5 * n;
-     int ans =0;
+  //   int ans =0;
         // Binary Search.
         while (low < high)
         {
@@ -43,7 +43,7 @@ class Solution
             // Checking if mid's factorial
             // contains n trailing zeroes.
             if (check(mid, n)){
-                ans = mid;
+               // ans = mid;
                 high = mid;
             }
             else
