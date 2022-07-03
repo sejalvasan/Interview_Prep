@@ -76,13 +76,26 @@ class Solution
         if(head == null || head.next ==null)
         return head;
         
-        Node newHead = reverseList(head.next);
+        // Node newHead = reverseList(head.next);
         
-        Node headNext = head.next;
-        headNext.next = head;
-        head.next = null;
-        return newHead;
+        // Node headNext = head.next;
+        // headNext.next = head;
+        // head.next = null;
+        // return newHead;
         
-        //TC = O(N)  SC 
+        //TC = O(N)  SC = O(1)
+        
+        Node prev = null;
+        Node cur = head;
+        
+        while(cur!=null){
+            Node temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
+        }
+        
+        return prev;
+        
     }
 }
