@@ -88,37 +88,31 @@ class MergeLists
 class LinkedList
 {
     //Function to merge two sorted linked list.
-    Node sortedMerge(Node l1, Node l2) {
+    Node sortedMerge(Node head1, Node head2) {
      // This is a "method-only" submission. 
      // You only need to complete this method
-     if(l1==null) return l2;
      
-     if(l2==null) return l1;
-     
-     //pointing l1 to the smaller node
-     if(l1.data>l2.data){
-         Node temp = l1;
-         l1 = l2;
-         l2 = temp;
+     if(head1==null || head2==null){
+         return head1!=null?head1:head2;
      }
      
-     Node res =l1;
+     Node dummy = new Node(-1);
+     Node prev = dummy;
+     Node c1 = head1;
+     Node c2 = head2;
      
-     while(l1!=null && l2!=null){
-         Node temp = null;
-         while(l1!=null && l1.data<=l2.data){
-             temp = l1;
-             l1=l1.next;
+     while(c1!=null && c2!=null){
+         if(c1.data<c2.data){
+             prev.next = c1;
+             c1 = c1.next;
+         }else{
+             prev.next = c2;
+             c2 = c2.next;
          }
-         
-         temp.next =l2;
-         
-         //swapping
-         Node tempp =l1;
-         l1 = l2;
-         l2 = tempp;
-         }
-        
-     return res;
+         prev = prev.next;
+     }
+     
+     prev.next=c1!=null?c1:c2;
+     return dummy.next;
    } 
 }
