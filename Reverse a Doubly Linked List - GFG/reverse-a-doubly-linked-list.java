@@ -116,7 +116,21 @@ public static Node reverseDLL(Node  head)
     cur.next = null;
     
     return head;
+// if(head == null || head.next == null)
+//     return head;
+    
+//     Node curr = head, prev = null;
+    
+//     while(curr != null){
+//         prev = curr.prev;
+//         curr.prev = curr.next;
+//         curr.next = prev;
+        
+//         curr = curr.prev;
+//     }
+//     return prev.prev;
 }
+
 
 
 // { Driver Code Starts.
