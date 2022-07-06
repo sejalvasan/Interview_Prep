@@ -2,6 +2,7 @@ class Solution {
 	class Trie {
 		Trie[] children;
 		public Trie() {
+            //there can be 2 possibilities 0 or 1
 			children = new Trie[2];
 		}
 	}
@@ -13,7 +14,7 @@ class Solution {
 		for(int num: nums) {
 			Trie curNode = root;
 			for(int i = 31; i >= 0; i --) {
-				int curBit = (num >>> i) & 1;
+				int curBit = (num >> i) & 1;
 				if(curNode.children[curBit] == null) {
 					curNode.children[curBit] = new Trie();
 				}
