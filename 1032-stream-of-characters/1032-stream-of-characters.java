@@ -25,7 +25,7 @@ class StreamChecker {
 		for(int i=word.length()-1;i>=0;i--){ // Iterating in revese order
 			char c = word.charAt(i);
 			int index = c - 'a';
-			if(it!=null && it.children[index]==null){
+			if(it.children[index]==null){
 				TrieNode newNode = new TrieNode();
 				it.children[index] = newNode;
 			}
