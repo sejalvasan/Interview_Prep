@@ -45,7 +45,7 @@ class StreamChecker {
 			char c = queryStr.charAt(i);
 			int index = c - 'a';
 
-			if(it!=null && it.children[index]!=null){
+			if(it.children[index]!=null){
 				it = it.children[index];
 				if(it.isLeaf){
 					return true;
