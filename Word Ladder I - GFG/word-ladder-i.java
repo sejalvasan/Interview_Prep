@@ -55,6 +55,9 @@ class Solution
                 for(int j =0;j<currWord.length;j++){
                     char original = currWord[j];
                     for(char c='a';c<='z';c++){
+                        if(c==original)
+                        continue;
+                        
                         currWord[j]=c;
                         if(endWord.equals(String.valueOf(currWord)))
                         return level+1;
