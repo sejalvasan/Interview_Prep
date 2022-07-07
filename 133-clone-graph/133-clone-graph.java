@@ -20,33 +20,35 @@ class Node {
 
 class Solution {
     public Node cloneGraph(Node node) {
-        //solved via bfs
-        if(node == null)
-            return node;
+        
+        if(node==null)
+            return null;
         
         HashMap<Node, Node> map = new HashMap<>();
-        Node newNode = new Node();
-        newNode.val = node.val;
-            map.put(node,newNode);
         Queue<Node> q = new LinkedList<>();
+        
+        Node newNode = new Node(); 
+        newNode.val = node.val;
+        
+        map.put(node,newNode); // 1->1'
         q.add(node);
+        
         while(!q.isEmpty()){
-              int size=q.size();
+            int size = q.size();
             while(size-->0){
-                Node rem = q.poll();
-                for(Node child: rem.neighbors){
+              Node rem = q.remove();
+                for(Node child:rem.neighbors){
                     if(!map.containsKey(child)){
-                          Node newChild = new Node();
-                           newChild.val = child.val;
-                        map.put(child,newChild);
+                        Node newNodes = new Node();
+                        newNodes.val = child.val;
+                        map.put(child,newNodes);
                         q.add(child);
                     }
-                    Node newList = map.get(rem); //getting 2'
-                    newList.neighbors.add(map.get(child));
+                    Node newList = map.get(rem); //getting 1'
+                    newList.neighbors.add(map.get(child)); //1'->2'
                 }
             }
         }
-        return map.get(node); //1'
-        
+        return map.get(node);
     }
 }
