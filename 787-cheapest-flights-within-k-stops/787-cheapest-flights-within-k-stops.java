@@ -27,9 +27,9 @@ class Solution {
         int level=0;
 
         int[]dis = new int[n];
-        dis[src]=0;
         
         Arrays.fill(dis,Integer.MAX_VALUE);
+        dis[src]=0;
         
         while(!q.isEmpty() && level<=k){
           int size = q.size();
