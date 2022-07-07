@@ -94,3 +94,32 @@ class Solution
         return topo;
     }
 }
+
+//  Stack<Integer> st = new Stack<>();
+//         boolean[]vis = new boolean[V];
+//         for(int i=0;i<V;i++){
+//             if(vis[i]==false)
+//             dfs(adj,i,st,vis);
+//         }
+//         int[]ans = new int[V];
+//         int j=0;
+//         while(!st.isEmpty()){
+//           ans[j] = st.pop();
+//             j++;
+//         }
+//         return ans;
+//     }
+    
+//     public static void dfs(ArrayList<ArrayList<Integer>>adj, int node, Stack<Integer> st, boolean[]vis){
+//         vis[node]=true;
+        
+//         for(Integer it: adj.get(node)){
+//             if(vis[it]==false)
+//             {
+//                 dfs(adj,it,st,vis);
+//             }
+//         }
+//         st.add(node);
+//     }
+// }
+
