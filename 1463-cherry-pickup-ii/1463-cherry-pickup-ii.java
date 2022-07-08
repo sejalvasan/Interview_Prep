@@ -21,6 +21,7 @@ class Solution {
         }
 
         int maxCherries = 0;
+        //checking all 9 combinations
         for(int i=-1;i<=1;i++){
             for(int j=-1;j<=1;j++){
                 int newCol1 = col1 + i;
