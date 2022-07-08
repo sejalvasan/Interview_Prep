@@ -21,11 +21,11 @@ class Solution {
             int coldash = col+ dir[i][1];
             
             if(rowdash<0|| coldash<0 || rowdash>=grid.length ||coldash>=grid[0].length||
-Math.abs(grid[rowdash][coldash])!=color)
+    Math.abs(grid[rowdash][coldash])!=color)
                 continue;
             
             count++;
-            
+            //prevening to process unvisited
             if(grid[rowdash][coldash]==color){
                 dfs(grid,rowdash,coldash,color);
             }
