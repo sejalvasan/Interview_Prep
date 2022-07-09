@@ -1,44 +1,49 @@
 class Solution {
     public int numBusesToDestination(int[][] routes, int source, int target) {
-        HashMap<Integer, ArrayList<Integer> >map = new HashMap<>();
+        
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
         Queue<Integer> q = new LinkedList<>();
         
-        for(int i=0;i<routes.length;i++){
-            for(int j =0;j<routes[i].length;j++){ // as each bus can have diff number of bus stops
-                int stopno = routes[i][j];
-                ArrayList<Integer> busno = map.getOrDefault(stopno, new ArrayList<Integer>());
-                busno.add(i);
-                map.put(stopno,busno);
+        for(int i=0;i<routes.length;i++){  //for bus no.
+            for(int j=0;j<routes[i].length;j++){  //for bus stops of each bus
+                int stopNo = routes[i][j];
+             ArrayList<Integer> busNo = map.getOrDefault(stopNo,new ArrayList<Integer>());
+                busNo.add(i);
+                map.put(stopNo,busNo);
             }
         }
         
         int level =0;
-        HashSet<Integer> busStop = new HashSet<>();
-        HashSet<Integer> busvis = new HashSet<>();
+        HashSet<Integer> busVis = new HashSet<>();
+        HashSet<Integer> busStopVis = new HashSet<>();
+        
         q.add(source);
-        busStop.add(source);
+        busStopVis.add(source);
         
         while(!q.isEmpty()){
             int size = q.size();
-            
             while(size-->0){
                 int rem = q.remove();
-                if(rem==target)
+                
+                if(rem == target)
                     return level;
                 
-                ArrayList<Integer> bus = map.get(rem);
+                ArrayList<Integer> busNumbers = map.get(rem);
                 
-                for(int buss:bus){
-                    if(busvis.contains(buss))
+                for(int bus:busNumbers){
+                    if(busVis.contains(bus))
                         continue;
-                    int[]arr=routes[buss];
-                    for(int bs:arr){
-                        if(busStop.contains(bs))
+                    
+                    busVis.add(bus);
+                    
+                    int[]buses = routes[bus];
+                    
+                    for(int buss: buses){
+                        if(busStopVis.contains(buss))
                             continue;
-                        q.add(bs);
-                        busStop.add(bs);
+                        q.add(buss);
+                        busStopVis.add(buss);
                     }
-                    busvis.add(buss);
                 }
             }
             level++;
@@ -46,3 +51,5 @@ class Solution {
         return -1;
     }
 }
+
+
