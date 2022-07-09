@@ -1,6 +1,6 @@
 class Solution {
     public int maxResult(int[] nums, int k) {
-        
+        //tc = o(nlogk) sc = o(k)
         //score, index
         PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)->b[0]-a[0]);
         
