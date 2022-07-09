@@ -15,8 +15,8 @@ class Solution {
             if(indegree[v]==-1){
                 indegree[v]=i;
             }else{
-                black1 = i;
-                black2=indegree[v];
+                black1 = i;  //parent2
+                black2=indegree[v];  //parent1
                 break;
             }
         }
@@ -43,12 +43,12 @@ class Solution {
                     //case 2
                     return edges[i];
                 else{
-                    return edges[black2];
+                    return edges[black2];  //case 3 when blacklisted wrong one
                 }
             }
         }
         //no cycle detected
-        return edges[black1];
+        return edges[black1];   //case 1
     }
     
     public static boolean union(int x, int y, int[]parent, int[]rank){
