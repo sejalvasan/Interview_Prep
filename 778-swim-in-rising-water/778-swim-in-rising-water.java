@@ -1,4 +1,4 @@
-public class Pair implements Comparable<Pair>{
+ class Pair{
     int row;
     int col;
     int val;
@@ -8,14 +8,14 @@ public class Pair implements Comparable<Pair>{
         this.col=col;
         this.val=val;
     }
-    @Override
-    public int compareTo(Pair o){
-       return this.val - o.val;
-    }
+    // @Override
+    // public int compareTo(Pair o){
+    //    return this.val - o.val;
+    // }
 }
 class Solution {
     public int swimInWater(int[][] grid) {
-        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->a.val - b.val);
         pq.add(new Pair(0,0,grid[0][0]));
         int n = grid.length;
         boolean[][] vis = new boolean[n][n];
@@ -23,13 +23,12 @@ class Solution {
         
         while(!pq.isEmpty()){
         Pair rem = pq.remove();
+            
             if(vis[rem.row][rem.col] == true)
                 continue;
+            
             if(rem.row ==n-1 && rem.col==n-1)
                 return rem.val;
-            
-            if(vis[rem.row][rem.col]==true)
-                continue;
             
             vis[rem.row][rem.col]=true;
             
