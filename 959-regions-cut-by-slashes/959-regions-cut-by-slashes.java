@@ -35,6 +35,16 @@ class Solution {
                     union(4 * bno + 3, 4 * obno + 1);
                 }
                 
+                  
+                if(i < grid.length-1){
+                    int obno = (i + 1) * grid.length + j;
+                    union(4 * bno + 2, 4 * obno + 0);
+                }
+                
+                 if (j < grid.length-1){
+                    int obno = i * grid.length + (j + 1);
+                    union(4 * bno + 1, 4 * obno + 3);
+                }
                
             }
         }
