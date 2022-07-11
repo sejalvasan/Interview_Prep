@@ -18,13 +18,12 @@ class Solution {
         if(highway[0]>capacity) return false;
         
         for(int i=1;i<=lastDrop;i++){
-         
             highway[i] +=highway[i-1];
             if(highway[i]>capacity){
                 return false;
             }
-            
         }
+        
         return true;
         
         
