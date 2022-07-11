@@ -15,6 +15,8 @@ class Solution {
         
         TreeMap<Integer, Integer> map = new TreeMap<>();
         
+        //inserting start value and index in map
+        //treemap is already sorted
         for(int i =0;i<n;i++)
             map.put(intervals[i][0],i);
     
