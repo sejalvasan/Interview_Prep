@@ -3,46 +3,44 @@ class Solution {
         //divide the array into 4 equal subsets
      return canPartitionKSubsets(matchsticks,4);   
     }
-   public boolean canPartitionKSubsets(int[] nums, int k) {
-        int sum = 0;
-        for(int num : nums){
-            sum+=num;
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        
+        int total = 0;
+        for(int el: nums){
+            total+=el;
         }
-        
-        if((sum%k)!=0) return false;
-        
-        int subsetSum[] = new int[k];
-        return canPartitionKSubsets(nums,0,subsetSum,k,sum);
+
+        if(total%k !=0){
+            return false;
+        }
+
+        if (nums.length < k) return false;
+
+        int subsetSum = total/k;
+        boolean[] visited = new boolean[nums.length];
+        return canPartition(nums, visited, 0, k, 0, subsetSum);
+
     }
-    
-    private boolean canPartitionKSubsets(int nums[] , int idx , int subsetSum[] , int k , int sum){
-        if(idx==nums.length){
-            int sumObtained = subsetSum[0];
-            for(int subsetIdx = 1;subsetIdx<k;subsetIdx++){
-                if(subsetSum[subsetIdx]!=sumObtained) return false;
-            }
-            return true;
+
+    private boolean canPartition(int[] nums, boolean[] visited, int start, int k, int curSum, int subsetSum) {
+        
+        if(k==0) return true;
+        if(curSum>subsetSum)
+            return false;
+        
+        if(curSum==subsetSum){
+         return canPartition(nums,visited,0,k-1,0,subsetSum);
         }
         
-        for(int subsetIdx=0;subsetIdx<k;subsetIdx++){
-            if(subsetSum[subsetIdx]>(sum/k)) return false;
+        for(int i=start;i<nums.length;i++){
+            if(visited[i])
+                continue;
+            
+            visited[i]=true;
+            
+           if (canPartition(nums,visited,i+1,k,curSum+nums[i],subsetSum)) return true;
+            visited[i]=false;
         }
-        
-        for(int subsetIdx=0;subsetIdx<k;subsetIdx++){
-            if(subsetSum[subsetIdx]==0){
-                subsetSum[subsetIdx] = nums[idx];
-                boolean canPartition = canPartitionKSubsets(nums,idx+1,subsetSum,k,sum);
-                if(canPartition) return true;
-                subsetSum[subsetIdx] = 0;
-                break;
-            }else{
-                subsetSum[subsetIdx]+= nums[idx];
-                boolean canPartition = canPartitionKSubsets(nums,idx+1,subsetSum,k,sum);
-                if(canPartition) return true;
-                subsetSum[subsetIdx]-= nums[idx];
-            }
-        }
-        
         return false;
     }
 }
