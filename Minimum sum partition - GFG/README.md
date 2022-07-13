@@ -1,7 +1,7 @@
 # Minimum sum partition
-## Hard 
+##  Hard 
 <div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an integer array <strong>arr</strong> of size <strong>N</strong>, the task is to divide it into two sets S1 and S2 such that the absolute difference between their sums is minimum and find the minimum difference</span></p>
+                <p></p><p><span style="font-size:18px">Given an array&nbsp;<strong>arr</strong> of size <strong>N </strong>containing <strong>non-negative </strong>integers, the task is to divide it into two sets S1 and S2 such that the absolute difference between their sums is minimum and find the minimum difference</span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -31,5 +31,7 @@ You don't need to read input or print anything. Complete the function <strong><c
 <p><br>
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤&nbsp;<strong>N*|sum of array elements|</strong> ≤ 10<sup>6</sup></span></p>
+
+<p><span style="font-size:18px"><sup>The array contains non-negative integers.</sup></span></p>
  <p></p>
             </div>
