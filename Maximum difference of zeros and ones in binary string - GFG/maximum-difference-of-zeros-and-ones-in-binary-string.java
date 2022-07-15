@@ -23,34 +23,28 @@ class GFG {
 
 class Solution {
     int maxSubstring(String S) {
-     int ans=0,csum=0;
+        // code here
+        int cur=0, ans =0;
         
         for(int i =0;i<S.length();i++){
-            int val=0;
             
+            int val =0;
             if(S.charAt(i)=='0')
             val=1;
-            else if(S.charAt(i)=='1')
-            val=-1;
             
-            csum+=val;
+            if(S.charAt(i)=='1')
+            val =-1;
             
-            // if(csum>0)
-            // csum+=val;
-             if(ans<csum)
-            ans=csum;
+            cur+=val;
             
-            // else
-            // csum=val;
-            if(csum<0)
-            csum=0;
+            if(ans<cur)
+            ans = cur;
             
-            // if(ans<csum)
-            // ans=csum;
+            if(cur<0)
+            cur = 0;
         }
         
-        if(ans==0)
-        ans=-1;
+        if(ans==0) return -1;
         
         return ans;
     }
