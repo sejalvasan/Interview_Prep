@@ -1,5 +1,5 @@
 # Maximum difference of zeros and ones in binary string
-##  Easy 
+## Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a binary string <strong>S</strong>&nbsp;consisting of 0s and 1s. The task is to find the <strong>maximum difference</strong> of the number of <strong>0s</strong> and the number of <strong>1s</strong> (number of 0s – number of 1s) in the&nbsp;substrings of a string.</span></p>
 
