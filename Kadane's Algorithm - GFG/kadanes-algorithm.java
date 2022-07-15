@@ -36,11 +36,11 @@ class Solution{
     long maxSubarraySum(int arr[], int n){
         
         // Your code here
-        long curSum =0;
-        long maxSum =arr[0];
+        int curSum = 0;
+        int maxSum = arr[0];
         
-        for(int i=0;i<n;i++){
-            curSum+=arr[i];
+        for(int i =0;i<n;i++){
+            curSum += arr[i];
             
             if(maxSum<curSum)
             maxSum = curSum;
@@ -48,7 +48,9 @@ class Solution{
             if(curSum<0)
             curSum =0;
         }
+        
         return maxSum;
+        
     }
     
 }
