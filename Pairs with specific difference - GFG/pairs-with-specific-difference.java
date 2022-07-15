@@ -39,17 +39,33 @@ class Solution {
     {
         // Your code goes here 
         Arrays.sort(arr);
-        int sum =0;
+        // int sum =0;
         
-        for(int i =N-1;i>0;i--){
+        // for(int i =N-1;i>0;i--){
+            
+        //     if(arr[i]-arr[i-1]<K){
+        //     sum += arr[i];
+        //     sum += arr[i-1];
+        //     i--;
+        //     }
+        // }
+        // return sum;
+        
+        int[]dp = new int[N];
+        
+        dp[0]=0;
+        
+        for(int i =1;i<N;i++){
+            dp[i]=dp[i-1];
             
             if(arr[i]-arr[i-1]<K){
-            sum += arr[i];
-            sum += arr[i-1];
-            i--;
+                if(i>=2)
+                dp[i] = Math.max(dp[i],dp[i-2]+arr[i]+arr[i-1]);
+                else
+                dp[i]=Math.max(dp[i],arr[i]+arr[i-1]);
             }
+            
         }
-        return sum;
+        return dp[N-1];
     }
-    
 }
