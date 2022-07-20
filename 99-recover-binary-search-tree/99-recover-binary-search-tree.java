@@ -15,7 +15,7 @@
  */
 class Solution {
     public void recoverTree(TreeNode root) {
-        TreeNode prev = null;
+   TreeNode prev = null;
         TreeNode curr = root;
         TreeNode n1 = null;
         TreeNode n2 = null;
