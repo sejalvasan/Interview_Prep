@@ -8,54 +8,68 @@
  * }
  */
 class Solution {
-    private void markParents(TreeNode root, Map<TreeNode, TreeNode> parent_track) {
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.offer(root);
-        while(!queue.isEmpty()) { 
-            TreeNode current = queue.poll(); 
-            if(current.left != null) {
-                parent_track.put(current.left, current);
-                queue.offer(current.left);
-            }
-            if(current.right != null) {
-                parent_track.put(current.right, current);
-                queue.offer(current.right);
-            }
-        }
-    }
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
-        Map<TreeNode, TreeNode> parent_track = new HashMap<>();
-        markParents(root, parent_track); 
-        Map<TreeNode, Boolean> visited = new HashMap<>(); 
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.offer(target);
-        visited.put(target, true);
-        int curr_level = 0;
-        while(!queue.isEmpty()) { /*Second BFS to go upto K level from target node and using our hashtable info*/
-            int size = queue.size();
-            if(curr_level == k) break;
-            curr_level++;
-            for(int i=0; i<size; i++) {
-                TreeNode current = queue.poll(); 
-                if(current.left != null && visited.get(current.left) == null) {
-                    queue.offer(current.left);
-                    visited.put(current.left, true);
+        HashMap<TreeNode, TreeNode> parent = new HashMap<>();
+        markParent(root,parent);
+        HashMap<TreeNode, Boolean> vis = new HashMap<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        
+        q.add(target);
+        vis.put(target, true);
+        int curLevel =0;
+        
+        while(!q.isEmpty()){
+            if(curLevel ==k)
+                break;
+            curLevel++;
+            int size = q.size();
+            while(size-->0){
+                TreeNode cur = q.remove();
+                
+                if(cur.left!=null && vis.get(cur.left)==null){
+                    q.add(cur.left);
+                    vis.put(cur.left,true);
                 }
-                if(current.right != null && visited.get(current.right) == null ) {
-                    queue.offer(current.right);
-                    visited.put(current.right, true);
+                
+                if(cur.right!=null && vis.get(cur.right)==null){
+                    q.add(cur.right);
+                    vis.put(cur.right,true);
                 }
-                if(parent_track.get(current) != null && visited.get(parent_track.get(current)) == null) {
-                    queue.offer(parent_track.get(current));
-                    visited.put(parent_track.get(current), true);
+                
+                if(parent.get(cur)!=null && vis.get(parent.get(cur))==null){
+                    q.add(parent.get(cur));
+                    vis.put(parent.get(cur),true);
                 }
             }
         }
-        List<Integer> result = new ArrayList<>(); 
-        while(!queue.isEmpty()) {
-            TreeNode current = queue.poll(); 
-            result.add(current.val);
+        
+        ArrayList<Integer> ans = new ArrayList();
+        
+        while(!q.isEmpty())
+        {
+         TreeNode cur = q.poll();
+            ans.add(cur.val);
         }
-        return result;
+        
+        return ans;
+    }
+    
+    public void markParent(TreeNode root, HashMap<TreeNode, TreeNode> map){
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        
+        while(!q.isEmpty()){
+            TreeNode cur = q.remove();
+            
+            if(cur.left!=null){
+                q.add(cur.left);
+                map.put(cur.left,cur);
+            }
+            
+            if(cur.right!=null){
+                q.add(cur.right);
+                map.put(cur.right,cur);
+            }
+        }
     }
 }
