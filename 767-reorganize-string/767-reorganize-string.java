@@ -1,33 +1,37 @@
 class Solution {
-   public String reorganizeString(String s) {
-        HashMap<Character, Integer> mp = new HashMap<>();
-        for (char c:s.toCharArray()){
-            mp.put(c,mp.getOrDefault(c,0)+1);
+    public String reorganizeString(String s) {
+     
+        HashMap<Character, Integer>map = new HashMap<>();
+        PriorityQueue<Character> pq = new PriorityQueue<>((n1,n2)->(map.get(n2)-map.get(n1)));
+        
+        for(int i =0;i<s.length();i++){
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
         }
         
-        PriorityQueue<Character> pq = new PriorityQueue<>((n1,n2)->mp.get(n2)-mp.get(n1));
-        
-        pq.addAll(mp.keySet());
+        pq.addAll(map.keySet());
         
         StringBuilder sb = new StringBuilder();
         
         char block = pq.poll();
         sb.append(block);
-        mp.put(block,mp.get(block)-1);
+        map.put(block,map.get(block)-1);
         
         while(pq.size()>0){
             char temp = pq.poll();
             sb.append(temp);
-            mp.put(temp,mp.get(temp)-1);
+            map.put(temp,map.get(temp)-1);
             
-            if(mp.get(block)>0)
+            if(map.get(block)>0){
                 pq.add(block);
-              
-        block =temp;
+            }
+            
+            block = temp;
         }
         
-         if(mp.get(block)>0)
-                return "";
+        if(map.get(block)>0){
+            return "";
+        }
+        
         return sb.toString();
     }
 }
