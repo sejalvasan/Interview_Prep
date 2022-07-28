@@ -9,13 +9,12 @@ class Solution {
             return -1;
         while(j>=0 && arr[j]<=arr[i])
             j--;
-      //  if(i>=0)
             swap(arr,i,j);
         
         reverse(arr, i+1, l-1);
         
-       long val = Long.valueOf(String.valueOf(arr));
-        return val <= Integer.MAX_VALUE ? (int) val : -1; 
+        long val = Long.valueOf(String.valueOf(arr));
+         return val <= Integer.MAX_VALUE ? (int) val : -1; 
     }
     private void swap(char[] array, int i, int j) {
         char tmp = array[i];
