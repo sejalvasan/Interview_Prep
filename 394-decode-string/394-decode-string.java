@@ -1,6 +1,6 @@
 class Solution {
     public String decodeString(String s) {
-        
+        //TC = O(N) SC =O(N)
         Stack<StringBuilder> strStack= new Stack<>();
         Stack<Integer> freqStack = new Stack<>();
         StringBuilder sb = new StringBuilder();
