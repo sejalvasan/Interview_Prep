@@ -2,6 +2,7 @@ class Pair{
     int x;
     int y;
     int val;
+    
     Pair(int x, int y, int val){
         this.x = x;
         this.y = y;
