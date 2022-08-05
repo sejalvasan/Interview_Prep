@@ -1,38 +1,48 @@
 class Solution {
     public void solveSudoku(char[][] board) {
-        if(board == null || board.length == 0)
+        if(board.length==0 || board == null)
             return;
+        
         solve(board);
     }
     
-    public boolean solve(char[][] board){
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0; j < board[0].length; j++){
-                if(board[i][j] == '.'){
-                    for(char c = '1'; c <= '9'; c++){//trial. Try 1 through 9
-                        if(isValid(board, i, j, c)){
-                            board[i][j] = c; //Put c for this cell
-                            
-                            if(solve(board))
-                                return true; //If it's the solution return true
-                            else
-                                board[i][j] = '.'; //Otherwise go back
-                        }
-                    }
-                    
+    
+    public boolean solve(char[][]board){
+        
+     for(int i =0;i<9;i++){
+        for(int j =0;j<9;j++){
+          if(board[i][j]=='.'){
+            for(char c ='1';c<='9';c++){  //trying 1 to 9
+                if(isValid(board,i,j,c)){
+                board[i][j]=c;
+                
+                if(solve(board))
+                    return true;
+                
+                else
+                    board[i][j]='.';
+                }
+            }        
                     return false;
+
                 }
             }
         }
         return true;
     }
     
-    private boolean isValid(char[][] board, int row, int col, char c){
-        for(int i = 0; i < 9; i++) {
-            if(board[i][col] == c) return false; //check row
-            if(board[row][i] == c) return false; //check column
-            if(board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c) return false; //check 3*3 block
+    public boolean isValid(char[][]board, int row, int col, char c){
+        for(int i =0;i<9;i++){
+            if(board[row][i]==c) //checking col
+                return false;
+                
+                if(board[i][col]==c)  //checking row
+                    return false;
+                    
+                    if(board[3*(row/3)+i/3][3*(col/3)+i%3]==c)
+                        return false;
         }
+        
         return true;
     }
 }
