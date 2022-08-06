@@ -9,27 +9,27 @@ class WordFilter {
         }
 
         public void insert(String s, int index) {
-            TrieNode cur = root;
+            TrieNode it = root;
             for (char c : s.toCharArray()) {
-                int n = c - 'a';
-                if (cur.children[n] == null) {
-                    cur.children[n] = new TrieNode();
+                int idx = c - 'a';
+                if (it.children[idx] == null) {
+                    it.children[idx] = new TrieNode();
                 }
-                cur = cur.children[n];
-                cur.index = index;
+                it = it.children[idx];
+                it.index = index;
             }
         }
 
         public int startsWith(String prefix) {
-            TrieNode cur = root;
+            TrieNode it = root;
             for (char c : prefix.toCharArray()) {
-                TrieNode next = cur.children[c - 'a'];
-                if (next == null) {
+                int idx = c-'a';
+                if(it.children[idx]==null) 
                     return -1;
-                }
-                cur = next;
+                
+               it = it.children[idx];
             }
-            return cur.index;
+            return it.index;
         }
     }
 
