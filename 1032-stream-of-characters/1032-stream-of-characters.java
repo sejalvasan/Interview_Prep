@@ -1,60 +1,68 @@
 class StreamChecker {
-	private class TrieNode{
-		private TrieNode[] children =null;
-		private boolean isLeaf;
-		public TrieNode(){
-			children = new TrieNode[26];
-		}
-	}
 
-	private TrieNode root = null;
+    class TrieNode{
+        TrieNode children[];
+        boolean isLeaf;
+        
+        TrieNode(){
+            children = new TrieNode[26];
+            isLeaf = false;
+        }
+    }
+    
+    TrieNode root = null;
+    
+    public StreamChecker(String[] words) {
+    root = new TrieNode();
+    queStr = new StringBuilder();
 
-	private StringBuilder queryStr = null;
-
-	public StreamChecker(String[] words) {
-		root = new TrieNode();
-		queryStr = new StringBuilder();
-		for(String word : words) {
-			addWord(word);
-		}
-	}
-
-
-	private void addWord(String word){
-		TrieNode it = root;
-		for(int i=word.length()-1;i>=0;i--){ // Iterating in revese order
-			char c = word.charAt(i);
-			int index = c - 'a';
-			if(it.children[index]==null){
-				TrieNode newNode = new TrieNode();
-				it.children[index] = newNode;
-			}
-			it = it.children[index];
-		}
-		it.isLeaf = true;
-	}
-
-	public boolean query(char letter) {
-		queryStr.append(letter);
-		return search(queryStr.toString());
-	}
-
-	private boolean search(String queryStr){
-		TrieNode it = root;
-		for(int i=queryStr.length()-1;i>=0;i--){
-			char c = queryStr.charAt(i);
-			int index = c - 'a';
-
-			if(it.children[index]!=null){
-				it = it.children[index];
-				if(it.isLeaf){
-					return true;
-				}
-			} else {
-				return false;
-			}
-		}
-		return false;
-	}
-
+        for(String w: words){
+            addWord(w);
+        }
+    }
+    
+    public void addWord(String s){
+        TrieNode it = root;
+        
+        for(int i =s.length()-1;i>=0;i--){
+           char c = s.charAt(i);
+            int idx = c-'a';
+            if(it.children[idx]==null)
+                it.children[idx]=new TrieNode();
+            
+            it = it.children[idx];
+        }
+        
+        it.isLeaf=true;
+    }
+    
+    StringBuilder queStr;
+    
+    public boolean query(char letter) {
+        queStr.append(letter);
+     return search(queStr.toString());   
+    }
+    
+    public boolean search(String word){
+        TrieNode it = root;
+        
+        for(int i =word.length()-1;i>=0;i--){
+            char c = word.charAt(i);
+            int idx = c-'a';
+           if(it.children[idx]!=null){
+               it=it.children[idx];
+               if(it.isLeaf)
+                   return true;
+           }else
+               
+            return false;
+        }
+        return false;
+    }
 }
+
+/**
+ * Your StreamChecker object will be instantiated and called as such:
+ * StreamChecker obj = new StreamChecker(words);
+ * boolean param_1 = obj.query(letter);
+ */
