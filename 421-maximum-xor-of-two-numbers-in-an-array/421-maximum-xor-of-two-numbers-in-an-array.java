@@ -27,13 +27,13 @@ class Solution {
 		Trie curNode = root;
 		int targetNum = 0;
 		for(int i = 31; i >= 0; i --) {
-			int curBit = (num >>> i) & 1;
+			int curBit = (num >> i) & 1;
 			int targetBit = curBit == 0 ? 1:0;
 			if(curNode.children[targetBit] != null) {
-				targetNum = targetNum*2 +targetBit;
+				targetNum = targetNum*2 + targetBit;
 				curNode = curNode.children[targetBit];
 			}else {
-				targetNum = targetNum*2 +curBit;
+				targetNum = targetNum*2 + curBit;
 				curNode = curNode.children[curBit];
 			}
 		}
