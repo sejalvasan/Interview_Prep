@@ -20,15 +20,14 @@ class Solution {
             return 0;
             
         length=0;
-        helper(root,-1); //as we are calculating in terms of nodes but need edges
+        helper(root,0); //as we are calculating in terms of nodes but need edges
         return length-1;
     }
     
     
     public int helper(TreeNode root,int val){
         if(root ==null)
-            return 0;
-        
+            return 0;     
         
         int left = helper(root.left, root.val);
         int right = helper(root.right,root.val);
