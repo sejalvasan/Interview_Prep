@@ -43,9 +43,9 @@ class Solution {
     }
         
     public int max(TreeNode root){
-        if(root.right!=null)
-            return max(root.right);
-        else
+        while(root.right!=null)
+            root = root.right;
+        
             return root.val;
     }
 }
