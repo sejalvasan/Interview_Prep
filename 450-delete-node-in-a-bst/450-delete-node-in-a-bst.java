@@ -20,33 +20,32 @@ class Solution {
             return null;
         
         if(root.val>key){
-            root.left = deleteNode(root.left,key);
+            root.left = deleteNode(root.left, key);
             return root;
         }else if(root.val<key){
-            root.right = deleteNode(root.right,key);
-            return root;
-        }else{
-            if(root.right!=null && root.left!=null){
-              int lmax=max(root.left);
-              root.val = lmax;
-              root.left = deleteNode(root.left,lmax);
+            root.right = deleteNode(root.right, key);
+        return root;
+        }
+        else{
+            if(root.left!=null && root.right!=null){
+                int lmax = max(root.left);
+                root.val = lmax;
+                root.left = deleteNode(root.left, lmax);
                 return root;
-            }else if(root.right!=null){
-                return root.right;
             }else if(root.left!=null){
                 return root.left;
+            }else if(root.right!=null){
+                return root.right;
             }else{
                 return null;
             }
         }
-        
     }
-        
+    
     public int max(TreeNode root){
         while(root.right!=null)
             root = root.right;
         
-            return root.val;
+        return root.val;
     }
 }
-    
