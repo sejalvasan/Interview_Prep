@@ -26,7 +26,6 @@ class Solution {
 
         for(Map.Entry<Integer, Long> entry: map.entrySet()){
             totalCount += entry.getValue();
-            System.out.println( " k " +entry.getKey() + " V "+ entry.getValue() );
         }
 
         return (int)(totalCount % (1000000000 + 7));
