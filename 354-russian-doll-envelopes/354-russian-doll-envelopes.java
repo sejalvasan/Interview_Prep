@@ -13,44 +13,41 @@ class Solution {
         
         Arrays.sort(env,(a,b) -> a.w==b.w?b.h-a.h:a.w-b.w);
                 
-        ArrayList<Envelopes> temp = new ArrayList<>();
-        temp.add(env[0]);
-        
+        //ArrayList<Integer> temp = new ArrayList<>();
+        int[]temp=new int[n];
+        temp[0]=env[0].h;
+      //  temp.add(env[0].h);
+        int lastIndex =0;
         for(int i = 1 ; i < n ; i++){
             
-            if(env[i].h > temp.get(temp.size()-1).h){
-                temp.add(env[i]);
-            }else{
-                int idx = lower_bound(temp,env[i].h);
-                temp.set(idx,env[i]);
-            }
+            int index = binary(temp,0,lastIndex,env[i].h);
+           // temp.set(index, env[i].h);
+            temp[index]=env[i].h;
+            lastIndex = Math.max(lastIndex, index);
+            
         }
         
-        return temp.size();
+        return lastIndex+1;
         
     }
     
-    public int lower_bound(ArrayList<Envelopes> array, int key)
+    public int binary(int[] array,int l, int h, int key)
     {
 
-        int low = 0, high = array.size();
-        int mid;
- 
-        while (low < high) {
- 
-            mid = low + (high - low) / 2;
- 
-            if (key <= array.get(mid).h) {
-                high = mid;
-            }else {
-                low = mid + 1;
-            }
+   if(key>array[h]) return h+1;
+        while(l<h){
+            int mid = l+(h-l)/2;
+            
+            if(key==array[mid])
+                return mid;
+            
+            else if(array[mid]<key)
+                l= mid+1;
+            
+            else
+               h = mid;
         }
-
-        if (low < array.size() && array.get(low).h < key) {
-            low++;
-        }
-         return low;
+        return h;
     }
     
    public class Envelopes{
