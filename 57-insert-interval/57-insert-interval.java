@@ -62,7 +62,7 @@ public int[][] insert(int[][] intervals, int[] newInterval) {
         }
         idx++;
     }
-        return res.toArray(new int[res.size()][]);
+        return res.toArray(new int[0][]);
 }
 }
     
