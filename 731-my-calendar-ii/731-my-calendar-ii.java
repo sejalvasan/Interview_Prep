@@ -13,12 +13,16 @@ class MyCalendarTwo {
         int activeBookings =0;
         
         for(int time: tmap.values()){
-            activeBookings +=time;
+            activeBookings += time;
             
             if(activeBookings>2){
                 //undo it
                  tmap.put(start,tmap.getOrDefault(start,0)-1);
+                if(tmap.get(start)==0)
+                 tmap.remove(start);
                  tmap.put(end,tmap.getOrDefault(end,0)+1);
+                  if(tmap.get(end)==0)
+                 tmap.remove(end);
                 return false;
             }
         }
