@@ -16,35 +16,20 @@
 
 
  class Solution {
-    class Pair{
-    boolean isBST = true;
-    long min =Long.MAX_VALUE;
-    long max = Long.MIN_VALUE;
-}
     
     public boolean isValidBST(TreeNode root) {
         //we can do this question by morris and use prev and curr for SC=O(1)
-    Pair ans = helper(root);
-        return ans.isBST;
+    return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
-    
-    public Pair helper(TreeNode root){
-        if(root == null){
-            return new Pair();
-        }
-        
-        
-        Pair lp = helper(root.left);
-        Pair rp = helper(root.right);
-        
-        Pair mp = new Pair();
-        mp.min = Math.min(root.val,Math.min(lp.min,rp.min));
-        mp.max = Math.max(root.val,Math.max(lp.max,rp.max));
-        mp.isBST = root.val>lp.max && root.val<rp.min && lp.isBST && rp.isBST;
-        
-        
-        return mp;
-    }
+     
+     public boolean isValidBST(TreeNode root, long min, long max){
+         if(root==null) return true;
+         
+         if(root.val<=min || root.val>=max)
+             return false;
+         
+         return isValidBST(root.left, min,root.val) && isValidBST(root.right,root.val,max);
+     }
 }
 
 // class Solution {
