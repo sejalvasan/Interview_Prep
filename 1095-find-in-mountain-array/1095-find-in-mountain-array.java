@@ -30,7 +30,7 @@ public int findInMountainArray(int target, MountainArray mountainArr) {
     }
     
     // search element in in decreasing part of array 
-    lo=i;
+    lo=i+1;
     hi=mountainArr.length()-1;
     while(lo<=hi){
         int m= (lo+hi)/2;
