@@ -14,10 +14,12 @@ class Solution {
     }
     
     public static void dfs(boolean[]vis, int[][]isConnected, int i){
+        
+            vis[i]=true;
+
         for(int j=0;j<isConnected.length;j++){
             if(vis[j]==false && isConnected[i][j]==1)
             {
-                vis[j]=true;
                 dfs(vis,isConnected,j);
             }
         }
