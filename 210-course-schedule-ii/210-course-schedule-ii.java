@@ -1,7 +1,6 @@
 class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        //making graph
-        ArrayList<Integer>[]graph = new ArrayList[numCourses];
+         ArrayList<Integer>[]graph = new ArrayList[numCourses];
         
         for(int i =0;i<graph.length;i++){
             graph[i]=new ArrayList<>();
