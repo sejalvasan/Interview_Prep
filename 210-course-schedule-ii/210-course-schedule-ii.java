@@ -7,7 +7,7 @@ class Solution {
         }
         
         for(int[]req:prerequisites){
-            graph[req[0]].add(req[1]);
+            graph[req[1]].add(req[0]);
         }
      //follow kanhs algo
         
@@ -26,11 +26,12 @@ class Solution {
         }
         
         int[]topo = new int[numCourses];
-        int idx = graph.length-1;
+        int idx = 0;//graph.length-1;
         while(!q.isEmpty()){
             Integer a = q.poll();
             topo[idx]=a;
-            idx--;
+           // idx--;
+            idx++;
             
             for(int n:graph[a]){
                 indegree[n]--;
@@ -40,7 +41,7 @@ class Solution {
                 }
         }
         
-        if(idx==-1)
+        if(idx==numCourses)
             return topo;
         
         return new int[]{};
