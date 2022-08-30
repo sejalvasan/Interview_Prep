@@ -31,7 +31,7 @@ class Solution {
                 
                 if(nr<0 || nc<0 || nr>=grid.length || nc>= grid[0].length || grid[nr][nc]==0)
                     continue;
-                grid[nr][nc]=0;
+           
            dfs(nr, nc, grid);
             }
         }
