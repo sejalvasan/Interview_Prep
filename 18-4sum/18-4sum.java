@@ -10,8 +10,8 @@ class Solution {
 		if(nums == null || n<0)
 			return l;
 
-		for(i=0;i<n;i++) {
-			for(j = i+1;j<n;j++) {
+		for(i=0;i<n-3;i++) {
+			for(j = i+1;j<n-2;j++) {
 				long remSum = target-nums[j];
 				remSum -=nums[i];
 				left = j+1;
