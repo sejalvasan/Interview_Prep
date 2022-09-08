@@ -47,30 +47,30 @@ class Solution {
         //   }
         // }
         // return res;
-    
-        while(root!=null){
-            if(root.left==null){
-                //work
-                res.add(root.val);
+    while(root!=null){
+        if(root.left==null){
+            res.add(root.val);
+            root = root.right;
+        }else{
+            TreeNode iop = root.left;
+            
+            while(iop.right!=root && iop.right!=null){
+                iop = iop.right;
+            }
+            
+            if(iop.right==null){
+                iop.right = root;
+                root = root.left;
+            }
+            
+            if(iop.right==root){
+               res.add(root.val);
+
+                iop.right = null;
                 root = root.right;
-            }else{
-                TreeNode iop = root.left;
-                
-                while(iop.right!=null && iop.right!=root)
-                    iop=iop.right;
-                
-                if(iop.right==null){
-                    iop.right = root;
-                    root = root.left;
-                }
-                
-                if(iop.right==root){
-                    res.add(root.val);
-                    iop.right = null;
-                    root = root.right;
-                }
             }
         }
+    }
         return res;
     }
 }
