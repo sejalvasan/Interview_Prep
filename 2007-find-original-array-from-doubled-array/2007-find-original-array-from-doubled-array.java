@@ -9,7 +9,7 @@ class Solution
             return new int[0];
         
         HashMap<Integer,Integer> map = new HashMap<>();
-        Arrays.sort(nums);
+       Arrays.sort(nums);
         
         for(int i=0;i<n;i++)
         {
