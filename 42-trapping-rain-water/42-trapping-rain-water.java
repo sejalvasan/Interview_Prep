@@ -1,7 +1,7 @@
 class Solution {
     public int trap(int[] height) {
         int i=0;
-        int j =height.length-1;
+        int j = height.length-1;
         int leftMax=0, rightMax=0;
         int res=0;
         
@@ -20,9 +20,9 @@ class Solution {
                  res+=rightMax-height[j];
             
             j--;
-        }
-            
-        }
+        }        
+    }
+        
         return res;
     }
 }
