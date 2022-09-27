@@ -1,6 +1,5 @@
-class Solution {
-    
-    public int uniquePaths(int m, int n) {
+class Solution{
+public int uniquePaths(int m, int n) {
         int[][]dp = new int[m][n];
         
         for(int[]row:dp)
@@ -10,6 +9,7 @@ class Solution {
     }
     
         public int countPaths(int m, int n, int i, int j, int[][]dp){
+            //end point
         if(i==m-1 && j==n-1)
             return 1;
         
