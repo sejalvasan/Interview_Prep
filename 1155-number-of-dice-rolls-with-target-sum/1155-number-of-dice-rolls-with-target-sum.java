@@ -57,9 +57,9 @@ class Solution {
         int countWays = 0;
 
         for(int i=1;i<=k;i++){
-            if(i>target){
-                break;
-            }   
+            // if(i>target){
+            //     break;
+            // }   
             countWays += numRollsToTargetHelper(n-1, k, target-i, dp);
             countWays %= mod;
         }
