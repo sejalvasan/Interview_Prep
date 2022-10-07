@@ -15,8 +15,7 @@ class MyCalendarThree {
         for(int time: tmap.values()){
             
             activeBookings += time;
-            max = Math.max(max,activeBookings);
-      
+            max = Math.max(max,activeBookings);   
         }
         return max;  
     }
