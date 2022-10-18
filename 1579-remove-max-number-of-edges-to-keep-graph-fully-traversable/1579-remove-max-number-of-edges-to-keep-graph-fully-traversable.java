@@ -66,7 +66,7 @@ class Solution {
                 parent[ly]=lx;
             }else {
                 parent[ly]=lx;
-                lx++;
+                rank[lx]++;
             }
             return true;
         }
