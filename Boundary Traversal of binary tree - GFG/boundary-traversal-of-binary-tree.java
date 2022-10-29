@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.io.*;
 import java.util.*;
 
@@ -89,6 +89,7 @@ class GFG
         }
     }
 }
+
 // } Driver Code Ends
 
 
@@ -108,49 +109,61 @@ class GFG
 
 class Solution
 {
-    boolean isleaf(Node root){
-    if(root.left==null && root.right==null) return true;
-    else return false;
-  }
-	ArrayList <Integer> boundary(Node root)
+    boolean isLeaf(Node node){
+     if(node.left == null && node.right==null)
+     return true;
+     
+     return false;
+    }
+    
+	ArrayList <Integer> boundary(Node node)
 	{
-	    ArrayList <Integer> ans = new ArrayList<>();
-	    if(isleaf(root)==false) ans.add(root.data);
-	    addLeftBoundary(root,ans);
-	    addLeaf(root,ans);
-	    addRightBoundary(root,ans);
-	    return ans;
-	}
-	
-	void addLeftBoundary(Node root, ArrayList<Integer>ans){
-	    Node cur = root.left;
-	    while(cur!=null){
-	        if(isleaf(cur)==false) ans.add(cur.data);
-	        if(cur.left!=null) cur = cur.left;
-	        else cur = cur.right;
+	    ArrayList<Integer> list = new ArrayList<>();
+	    
+	    if(isLeaf(node)==false){
+	    list.add(node.data);
 	    }
-	}
-	
-	void addRightBoundary(Node root, ArrayList<Integer>ans){
-	    Node cur = root.right;
-	    ArrayList<Integer> temp = new ArrayList<>();
-	    while(cur!=null){
-	        if(isleaf(cur)==false) temp.add(cur.data);
-	        if(cur.right!=null) cur = cur.right;
-	        else cur = cur.left;
+	    
+	    leftBoundary(node,list);
+	    addLeaves(node,list);
+	    rightBoundary(node,list);
+	    
+	    return list;
 	    }
-	    int i;
-	    for(i =temp.size()-1;i>=0;i--){
-	        ans.add(temp.get(i));
+	    
+	    public void leftBoundary(Node node, ArrayList<Integer> list){
+	        Node cur = node.left;
+	        while(cur!=null){
+	            if(isLeaf(cur)==false) list.add(cur.data);
+	            if(cur.left!=null) cur = cur.left;
+	            else
+	            cur = cur.right;
+	        }
 	    }
-	}
-	
-		void addLeaf(Node root, ArrayList<Integer>ans){
-		    if(isleaf(root)==true){
-		        ans.add(root.data);
-		        return;
-		    }
-		    if(root.left!=null) addLeaf(root.left,ans);
-		    if(root.right!=null) addLeaf(root.right,ans);
-		}
+	    
+	    public void rightBoundary(Node node, ArrayList<Integer> list){
+	        Node cur = node.right;
+	        ArrayList<Integer> l1 = new ArrayList<>();
+	        while(cur!=null){
+	            if(isLeaf(cur)==false) l1.add(cur.data);
+	            if(cur.right!=null) cur = cur.right;
+	            else
+	            cur = cur.left;
+	        }
+	        
+	        for(int i =l1.size()-1;i>=0;i--)
+	        list.add(l1.get(i));
+	    }
+	    
+	    public void addLeaves(Node node, ArrayList<Integer> list){
+	        if(isLeaf(node)==true){
+	            list.add(node.data);
+	            return;
+	        }
+	        
+	      if(node.left!=null)
+	      addLeaves(node.left,list);
+	      if(node.right!=null)
+	      addLeaves(node.right,list);
+	    }
 }
