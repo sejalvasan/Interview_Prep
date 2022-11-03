@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.LinkedList; 
@@ -94,7 +94,8 @@ class GfG {
                 t--;
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -119,40 +120,39 @@ class Solution
     public int kthLargest(Node root,int K)
     {
         //Your code here
-          
-        int count=0;
+        int count = 0;
         
         while(root!=null){
-            if(root.right == null){
-                //print
+            if(root.right==null){
+                //work
                 count++;
                 if(count==K)
                 return root.data;
-                 
-                 root = root.left;
+                
+                root = root.left;
             }else{
                 Node iop = root.right;
                 
                 while(iop.left!=null && iop.left!=root)
-                iop=iop.left;
+                iop = iop.left;
                 
-                
-                if(iop.left==null){
-                    //not processed
+                if(iop.left == null){
                     iop.left = root;
                     root = root.right;
                 }
+                
                 if(iop.left==root){
+                    count++;
+                    if(count==K)
+                    return root.data;
                     
-                count++;
-                if(count==K)
-                return root.data;
-                      iop.left = null;
-                   
-                    root=root.left;
+                    iop.left = null;
+                    root = root.left;
                 }
+                
             }
         }
+        
         return -1;
     }
 }
