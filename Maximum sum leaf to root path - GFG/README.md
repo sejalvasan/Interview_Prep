@@ -1,7 +1,6 @@
 # Maximum sum leaf to root path
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a Binary Tree, find the maximum sum path from a leaf to root.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a Binary Tree, find the maximum sum path from a leaf to root.</span></p>
 
 <p><br>
 <strong><span style="font-size:18px">Example 1:</span></strong></p>
@@ -47,5 +46,6 @@ from leaf to root for the given tree.</span></pre>
 <strong><span style="font-size:18px">Constraints :&nbsp;</span></strong></div>
 
 <div><span style="font-size:18px">1 &lt;= Number of nodes &lt;= 10^5</span></div>
- <p></p>
-            </div>
+
+<div><span style="font-size:18px">-10<sup>6</sup>&nbsp;&lt;= max sum path &lt;= 10<sup>6</sup></span></div>
+</div>
