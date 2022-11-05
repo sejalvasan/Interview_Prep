@@ -14,20 +14,21 @@
  * }
  */
 class Solution {
-    public TreeNode bstFromPreorder(int[] preorder) {
-      return construct(preorder,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    public TreeNode bstFromPreorder(int[] pre) {
+         
+	    return tree(pre, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
-    int index =0;
-    public TreeNode construct(int[]preorder, int min, int max){
-        if(index == preorder.length){
-         return null;   
-        }else if(preorder[index]>min && preorder[index]<max){
-            TreeNode node = new TreeNode();
-            node.val = preorder[index];
-            
-            index++;
-            node.left = construct(preorder, min, node.val);
-            node.right = construct(preorder,node.val,max);
+  
+    int idx = 0;
+    
+    public TreeNode tree(int[]pre, int min, int max){
+        if(pre.length==idx)
+        return null;
+        else if(pre[idx]>min && pre[idx]<max){
+            TreeNode node = new TreeNode(pre[idx]);
+            idx++;
+            node.left = tree(pre, min, node.val);
+            node.right = tree(pre, node.val, max);
             
             return node;
         }else{
