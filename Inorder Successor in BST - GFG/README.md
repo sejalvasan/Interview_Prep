@@ -1,7 +1,6 @@
 # Inorder Successor in BST
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a BST, and a reference to a Node x in the BST. Find the Inorder Successor of the given node in the BST.</span><br>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a BST, and a reference to a Node x in the BST. Find the Inorder Successor of the given node in the BST.</span><br>
 &nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -46,5 +45,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 <p><br>
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 1 &lt;= N &lt;= 1000, where N is number of nodes</span></p>
- <p></p>
-            </div>
+</div>
