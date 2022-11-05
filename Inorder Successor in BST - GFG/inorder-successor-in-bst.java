@@ -168,22 +168,20 @@ class Solution
         // return succ;
         //  }
         
-Node succ = null;
-if(root == null)
-return succ;
-if(k==null)
-return succ;
-
-while(root!=null){
-    
-    if(root.data<=k.data)
-        root = root.right;
-        else{
-            succ = root;
-            root = root.left;
+        Node succ = null;
+        
+        if(root==null)
+        return null;
+        
+        while(root!=null){
+            if(root.data<=k.data)
+            root = root.right;
+            else{
+                succ = root;
+                root = root.left;
+            }
         }
-}
-
-return succ;
+        
+        return succ;
          }
 }
