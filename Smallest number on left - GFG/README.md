@@ -1,7 +1,6 @@
 # Smallest number on left
-##  Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:20px">Given an array <strong>a&nbsp;</strong>of integers of length <strong>n</strong>, find the nearest smaller number for every element such that the smaller element is on left side.If no small element present on the left print -1.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:20px">Given an array <strong>a&nbsp;</strong>of integers of length <strong>n</strong>, find the nearest smaller number for every element such that the smaller element is on left side.If no small element present on the left print -1.</span></p>
 
 <p><strong><span style="font-size:20px">Example 1:</span></strong></p>
 
@@ -28,7 +27,6 @@ You do not need to read input or print anything. Your task is to complete the fu
 <strong>Expected Auxiliary Space:</strong> O(n)</span></p>
 
 <p><span style="font-size:20px"><strong>Constraints:</strong><br>
-1 ≤ n ≤ 100<br>
-1 ≤ a[i] ≤ 10<sup>4</sup>&nbsp;&nbsp;</span></p>
- <p></p>
-            </div>
+1 ≤ n ≤ 10000<br>
+0 ≤ a[i] ≤ 10<sup>4</sup>&nbsp;&nbsp;</span></p>
+</div>
