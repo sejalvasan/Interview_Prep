@@ -15,7 +15,7 @@ class Solution
         // code here 
         int lo =0, mid =0, hi = n-1;
         
-        for(int i =0;i<n;i++){
+        while(mid<=hi){
             if(arr[mid]==0){
                 int temp= arr[lo];
                 arr[lo] = arr[mid];
