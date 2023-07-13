@@ -1,41 +1,40 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial template for Java
 
 import java.io.*;
 import java.util.*;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function template for Java
 
 class Solution
 {
-    public static void sort012(int a[], int n)
+    public static void sort012(int arr[], int n)
     {
         // code here 
-        int low =0, mid =0, high = n-1;
+        int lo =0, mid =0, hi = n-1;
         
-        while(mid<=high){
-            if(a[mid]==0){
-                swap(low,mid,a);
-                low++;
+        for(int i =0;i<n;i++){
+            if(arr[mid]==0){
+                int temp= arr[lo];
+                arr[lo] = arr[mid];
+                arr[mid] = temp;
                 mid++;
-            }else if(a[mid]==1){
+                lo++;
+            }else if(arr[mid]==1){
                 mid++;
             }else{
-                swap(mid,high,a);
-                high--;
+                int temp =arr[hi];
+                arr[hi] = arr[mid];
+                arr[mid] = temp;
+                hi--;
             }
         }
     }
-    public static void swap(int i, int j, int[]a){
-        int temp = a[i];
-        a[i]=a[j];
-        a[j]=temp;
-    }
 }
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 class GFG {
     
@@ -60,4 +59,5 @@ class GFG {
     }
 }
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
