@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 
 class MaxLenZeroSumSub
@@ -23,7 +23,8 @@ class MaxLenZeroSumSub
             T--;
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 class GfG
@@ -32,22 +33,21 @@ class GfG
     {
         // Your code here
         HashMap<Integer, Integer> map = new HashMap<>();
-        int maxi = 0;
-        int sum =0;
+        int len = 0;
+        int sum = 0;
         
-        for(int i =0;i<n;i++){
-            sum+=arr[i];
-          
-          if(sum==0)
-          maxi=i+1;
-          
-          else{
-              if(map.get(sum)!=null)
-              maxi=Math.max(maxi, i-map.get(sum));
-              else
-              map.put(sum,i);
-          }
-      }
-      return maxi;
+        for(int i=0;i<n;i++){
+         sum+=arr[i];
+         if(sum==0){
+             len = i+1;
+         }else{
+         if(map.containsKey(sum)){
+             len = Math.max(len,i-map.get(sum));
+         }else{
+             map.put(sum,i);
+         }
+        }
+        }
+        return len;
     }
 }
