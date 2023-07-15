@@ -1,7 +1,6 @@
 # Max rectangle
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary matrix <strong>M </strong>of size <strong>n X m</strong>. Find the maximum area of a rectangle formed only of <strong>1s</strong> in the given matrix. </span></p>
+## Hard
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary matrix <strong>M </strong>of size <strong>n X m</strong>. Find the maximum area of a rectangle formed only of <strong>1s</strong> in the given matrix. </span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -34,5 +33,4 @@ Your task is to complete the function <strong>maxArea</strong>&nbsp;which return
 0&lt;=M[][]&lt;=1<br>
 <br>
 <strong>Note:</strong>The <strong>Input/Ouput</strong> format and <strong>Example</strong> given are used for system's internal purpose, and should be used by a user for <strong>Expected Output</strong> only. As it is a function problem, hence a user should not read any input from stdin/console. The task is to complete the function specified, and not to write the full code.</span></p>
- <p></p>
-            </div>
+</div>
