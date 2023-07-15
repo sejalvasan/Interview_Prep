@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.*;
@@ -27,6 +27,7 @@ public class Main {
         }
     }
 }
+
 // } Driver Code Ends
 
 
@@ -35,14 +36,18 @@ public class Main {
 class Solution {
     int rowWithMax1s(int arr[][], int n, int m) {
         // code here
-        int i =0, j=m-1;
-        int maxIndex =-1;
-        while(i<n && j>=0){
-            if(arr[i][j]==1){
-                j--;
-                maxIndex = i;
-            }else i++;
+        int r = 0, c=m-1;
+        int row = -1;
+        
+        while(r<n && c>=0){
+            if(arr[r][c]==1){
+                row = r;
+                c--;
+            }else{
+                r++;
+            }
         }
-        return maxIndex;
+        
+        return row;
     }
 }
