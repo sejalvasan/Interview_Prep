@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 
 class FindMinCost
@@ -23,48 +23,51 @@ class FindMinCost
 		t--;
 		}
 	}
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 /*Complete the function given below*/
 class Solution {
- public int maxArea(int M[][], int n, int m) {
+    public int maxArea(int M[][], int n, int m) {
         // add code here.
-        int heights []= new int [m];
+        int[]arr = new int[m];
         for(int i =0;i<m;i++){
-            heights[i]=M[0][i];
+            arr[i] = M[0][i];
         }
-        int area = largestAreaRectangle(heights);
         
-        for(int i=1;i<n;i++){
-            for(int j =0;j<m;j++){
+        int area = largestRect(arr);
+        
+        for(int i = 1;i<n;i++){
+            for(int j = 0;j<m;j++){
                 if(M[i][j]==1){
-                    heights[j]++;
-                }else{
-                    heights[j]=0;
-                }
+                    arr[j]+=1;
+                }else
+                arr[j]=0;
             }
-            area = Math.max(area, largestAreaRectangle(heights));
+            area = Math.max(area, largestRect(arr));
         }
-            return area;
+        
+        return area;
     }
     
-    static int largestAreaRectangle(int [] heights){
+    public int largestRect(int []arr){
+        int n = arr.length;
         Stack<Integer> st = new Stack<>();
         st.push(-1);
-        int maxArea =0;
-        for(int i =0;i<=heights.length;i++){
+        int area = 0;
+        
+        for(int i =0;i<=n;i++){
+            int val = i==n?0:arr[i];
             
-            int val =i ==heights.length?0:heights[i];
-            while(st.peek()!=-1 && heights[st.peek()]>=val){
-            int rm =i;
-            int h = heights[st.pop()];
-            int lm = st.peek();
-            maxArea = Math.max(maxArea, h*(rm-lm-1));
+            while(st.peek()!=-1 && arr[st.peek()]>=val){
+                int rm = i;
+                int h = arr[st.pop()];
+                int lm = st.peek();
+                area = Math.max(area, h*(rm-lm-1));
+            }
+            st.push(i);
         }
-        st.push(i);
-        }
-        return maxArea;
+        return area;
     }
-    
 }
