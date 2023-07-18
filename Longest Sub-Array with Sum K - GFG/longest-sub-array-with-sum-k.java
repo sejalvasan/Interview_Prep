@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 /*package whatever //do not write package name here */
@@ -40,7 +40,6 @@ class Array {
 }
 
 
-            
 
 // } Driver Code Ends
 
@@ -53,7 +52,7 @@ class Solution{
     // Function for finding maximum and value pair
     public static int lenOfLongSubarr (int A[], int N, int K) {
         //Complete the function
-        HashMap<Integer, Integer> map = new HashMap<>();
+      HashMap<Integer, Integer> map = new HashMap<>();
         int sum = 0;
         int maxLen = 0;
         
@@ -75,5 +74,3 @@ class Solution{
      return maxLen;   
     }
 }
-
-
