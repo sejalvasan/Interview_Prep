@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 /* package whatever; // don't place package name! */
 import java.util.*;
 class Node
@@ -58,7 +58,8 @@ class Remove_Duplicate_From_LL
 		
         t--;		
         }
-    }}// } Driver Code Ends
+    }}
+// } Driver Code Ends
 
 
 /*
@@ -75,19 +76,15 @@ class GfG
     //Function to remove duplicates from sorted linked list.
     Node removeDuplicates(Node head)
     {
-	// Your code here
-	if(head==null || head.next ==null)
-	return head;
+	// Your code here	
 	
 	Node cur = head;
-	
 	while(cur.next!=null){
-	    if(cur.next.data == cur.data){
-	        cur.next=cur.next.next;
-	    }
-	    else
+	    if(cur.data == cur.next.data){
+	        cur.next = cur.next.next;
+	    }else
 	    cur = cur.next;
-	}
+	    }
 	return head;
     }
 }
