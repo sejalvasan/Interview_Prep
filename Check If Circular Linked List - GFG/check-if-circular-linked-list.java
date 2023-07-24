@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 
 class Node
@@ -60,6 +60,7 @@ class Is_LinklIst_Circular
 	}
 }
 
+
 // } Driver Code Ends
 
 
@@ -79,20 +80,14 @@ class GfG
 {
     boolean isCircular(Node head)
     {
-	// Your code here
-	if(head==null) return true;
-	Node cur =head;
-	
-	while(cur.next!=head){
-         cur = cur.next;
-         if(cur==null)
-         return false;
-	}
-	
-	if(cur.next==head){
+	// Your code here	
+	Node slow = head, fast = head;
+	while(fast!=null && fast.next!=null){
+	    slow = slow.next;
+	    fast = fast.next.next;
+	    if(slow==fast)
 	    return true;
 	}
-	
 	return false;
     }
 }
