@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.io.*;
 import java.util.*;
 class Node
@@ -42,7 +42,8 @@ class GfG
                     printList(head); 
                 }
         }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 /*
@@ -63,42 +64,40 @@ class Solution
     { 
         //code here.
         Node newHead = reverse(head);
-        int carry =0;
-        
-        Node cur=newHead, cur1=newHead, prev = null;
+        Node cur = newHead, newHead1 = newHead, prev = null;
+        int carry = 0;
         
         while(cur!=null){
-            int sum =0;
-            if(prev ==null)
-            {
-                sum = cur.data+1;
-            }else{
-                sum = cur.data+carry;
+        int sum = carry+cur.data;
+
+            if(prev==null){
+                sum+=1;
             }
+            
             carry = sum/10;
             cur.data = sum%10;
             prev = cur;
             cur = cur.next;
         }
-        if(carry ==1){
-            Node dummy = new Node(1);
-            prev.next = dummy;
+        
+        if(carry==1){
+            Node node = new Node(1);
+            prev.next = node;
         }
-     return reverse(cur1);
-    
+        
+        return reverse(newHead1);
     }
     
-    public static Node reverse(Node head){
-        Node cur = head;
-        Node prev = null;
+    public static Node reverse(Node node){
+        Node cur = node, prev = null, next = cur;
         
         while(cur!=null){
-            Node temp = cur.next;
+            next = cur.next;
             cur.next = prev;
             prev = cur;
-            cur = temp;
-            
+            cur=next;
         }
+        
         return prev;
     }
 }
