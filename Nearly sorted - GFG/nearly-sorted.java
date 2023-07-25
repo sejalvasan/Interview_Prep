@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -27,6 +27,7 @@ class gfg
     }
 }
 
+
 // } Driver Code Ends
 
 
@@ -36,28 +37,24 @@ class Solution
     ArrayList <Integer> nearlySorted(int arr[], int num, int k)
     {
         // your code here
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-    ArrayList<Integer> ans = new ArrayList<>();
-    for(int i=0;i<k;i++){
+        ArrayList<Integer> ans = new ArrayList<>();
         
-        if(pq.size()<k){
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int i =0;
+        while(pq.size()<=k){
+            pq.add(arr[i]);
+            i++;
+         }
+         
+        for(i =k+1;i<arr.length;i++){
+            ans.add(pq.remove());
             pq.add(arr[i]);
         }
-    }
-    
-    for(int i=k;i<arr.length;i++){
-        pq.add(arr[i]);
-        if(pq.size()>k)
-        {
-         int rem = pq.remove();
-            ans.add(rem);   
+        
+        while(!pq.isEmpty()){
+            ans.add(pq.remove());
         }
-    }
-    
-    while(!pq.isEmpty()){
-          int rem = pq.remove();
-            ans.add(rem);
-    }
-    return ans;
+        
+        return ans;
     }
 }
