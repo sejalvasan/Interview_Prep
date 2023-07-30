@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 
@@ -19,6 +19,7 @@ class GFG
         }
     }
 }
+
 // } Driver Code Ends
 
 
@@ -27,33 +28,33 @@ class GFG
 class Solution{
     static int longestSubstrDistinctChars(String S){
         // code here
+        int ans = 0;
         HashMap<Character, Integer> map = new HashMap<>();
-        int i=0,j=0, max =-1;
+        int i=0, j=0;
+        int max = -1;
         
         while(j<S.length()){
-            char endChar =S.charAt(j);
+            char end = S.charAt(j);
             
-        
-            if(!map.containsKey(endChar))
-            map.put(endChar,1);
-            else{
-                map.put(endChar,map.get(endChar)+1);
-            }
-            
-            if(map.size()==j-i+1)
-            max=Math.max(max,j-i+1);
-            else {
-            while(map.size()<j-i+1){
-                char startChar = S.charAt(i);
-                if(map.containsKey(startChar))
-                map.put(startChar,map.get(startChar)-1);
-                if(map.get(startChar)==0)
-                map.remove(startChar);
-                i++;
-             }
+            map.put(end, map.getOrDefault(end,0)+1);
+            if(j-i+1==map.size())
+            max = Math.max(max, j-i+1);
+            else if(j-i+1>map.size()){
+                while(j-i+1>map.size()){
+                    char start = S.charAt(i);
+                    if(map.get(start)>0){
+                        map.put(start, map.get(start)-1);
+                        i++;
+                    }
+                    
+                    if(map.get(start)==0)
+                    map.remove(start);
+                }
             }
             j++;
         }
-            return max;
-        }
+        
+        return max;
+        
     }
+}
