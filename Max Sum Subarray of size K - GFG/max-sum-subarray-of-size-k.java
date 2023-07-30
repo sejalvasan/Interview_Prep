@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 import java.io.*;
 import java.util.*;
@@ -28,32 +28,29 @@ class GFG
         }
     }
 }
+
 // } Driver Code Ends
 
 
 //User function Template for Java
 class Solution{
-    static long maximumSumSubarray(int k, ArrayList<Integer> Arr,int N){
+    static long maximumSumSubarray(int K, ArrayList<Integer> Arr,int N){
         // code here
-        long max = Integer.MIN_VALUE;
-        long sum =0;
+        long sum = 0;
+        long max = 0;
         
-        int i=0; int j=0;
+        int i=0, j=0;
         
         while(j<N){
-              
-        sum+=Arr.get(j);
-        if(j-i+1<k)
-        j++;
+            sum+=Arr.get(j);
+             if(j-i+1==K){
+                max = Math.max(max,sum);
+                sum-=Arr.get(i);
+                i++;
+            }
+            j++;
+        }
         
-        else if(j-i+1==k){
-           max = Math.max(max,sum);
-            sum-=Arr.get(i);
-            i++;
-              j++;
-        }
-    
-        }
         return max;
     }
 }
