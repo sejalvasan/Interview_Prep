@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 import java.io.*;
 import java.util.*;
@@ -23,35 +23,38 @@ class GFG{
             System.out.println();
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
 class Solution{
-    static List<Integer> leftSmaller(int n, int arr[])
+    static List<Integer> leftSmaller(int n, int a[])
     {
         //code here
-        ArrayList<Integer> ans = new ArrayList<>();
+        List<Integer> l = new ArrayList<>();
         Stack<Integer> st = new Stack<>();
         
         for(int i=0;i<n;i++){
             if(st.isEmpty())
-            ans.add(-1);
+            l.add(-1);
             
-            else if(st.size()>0 && st.peek()<arr[i])
-            ans.add(st.peek());
+            else if(st.peek()<a[i])
+            l.add(st.peek());
             
-            else if(st.size()>0 && st.peek()>=arr[i]){
-                while(st.size()>0 && st.peek()>=arr[i])
+            else if(st.peek()>=a[i]){
+                while(st.size()>0 && st.peek()>=a[i])
                 st.pop();
                 
                 if(st.size()==0)
-                ans.add(-1);
-                
-                else ans.add(st.peek());
+                l.add(-1);
+                else
+                l.add(st.peek());
             }
-            st.push(arr[i]);
+            
+            st.push(a[i]);
         }
-        return ans;
+        
+        return l;
     }
 }
