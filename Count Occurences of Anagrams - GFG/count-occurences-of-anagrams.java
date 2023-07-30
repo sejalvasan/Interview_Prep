@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // Initial Template for Java
 
 import java.io.*;
@@ -19,7 +19,8 @@ class GFG {
             System.out.println(ans);
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 // User function Template for Java
@@ -29,44 +30,39 @@ class Solution {
     int search(String pat, String txt) {
         // code here
         HashMap<Character, Integer> map = new HashMap<>();
-        int k = pat.length();
-        int n = txt.length();
         
-        for(int i =0;i<k;i++){
-            char c = pat.charAt(i);
-            if(map.containsKey(c))
-            map.put(c,map.get(c)+1);
-            else
-            map.put(c,1);
+        for(int i=0;i<pat.length();i++){
+            char s = pat.charAt(i);
+            map.put(s, map.getOrDefault(s,0)+1);
         }
         
         int count = map.size();
+        int k = pat.length();
+        int ans = 0;
         
-        int i =0, j=0;
-        int ans =0;
+        int i=0, j=0;
         
-        while(j<n){
+        while(j<txt.length()){
             char endChar = txt.charAt(j);
             
-            if(map.containsKey(endChar))
-            {
+            if(map.containsKey(endChar)){
                 map.put(endChar, map.get(endChar)-1);
             }
             
             if(map.get(endChar)!=null && map.get(endChar)==0)
             count--;
             
-            if(j-i+1<k){
-                j++;
-            }
-            else if(j-i+1 == k){
-                if(count == 0)
-                ans+=1;
-                
+            if(j-i+1<k)
+            j++;
+            
+            else if(j-i+1==k){
                 char startChar = txt.charAt(i);
                 
+                if(count==0)
+                ans+=1;
+                
                 if(map.containsKey(startChar)){
-                    map.put(startChar,map.get(startChar)+1);
+                    map.put(startChar, map.get(startChar)+1);
                 }
                 
                 if(map.get(startChar)!=null && map.get(startChar)==1)
@@ -76,6 +72,7 @@ class Solution {
                 j++;
             }
         }
+        
         return ans;
     }
 }
