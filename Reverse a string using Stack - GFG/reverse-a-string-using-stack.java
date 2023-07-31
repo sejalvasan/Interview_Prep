@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 /*package whatever //do not write package name here */
 
 import java.io.*;
@@ -14,6 +14,7 @@ class GFG {
         }
 	}
 }
+
 // } Driver Code Ends
 
 
@@ -21,19 +22,17 @@ class Solution {
     
     public String reverse(String S){
         //code here
+        String ans = "";
         Stack<Character> st = new Stack<>();
+        char[]ch = S.toCharArray();
         
         for(int i=0;i<S.length();i++){
-            char c = S.charAt(i);
-            
-            st.push(c);
+            st.push(ch[i]);
         }
         
-        String ans ="";
+        while(!st.isEmpty())
+        ans+= st.pop();
         
-        while(!st.isEmpty()){
-            ans+=st.pop();
-        }
         return ans;
     }
 
