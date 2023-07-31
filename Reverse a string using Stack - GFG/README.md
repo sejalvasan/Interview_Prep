@@ -1,7 +1,6 @@
 # Reverse a string using Stack
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">You are given a string <strong>S</strong>, the task is to reverse the string using stack.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given a string <strong>S</strong>, the task is to reverse the string using stack.</span></p>
 
 <p>&nbsp;</p>
 
@@ -27,5 +26,4 @@
 <span style="font-size:18px">1 ≤ length of the string ≤ 100</span></p>
 
 <p>&nbsp;</p>
- <p></p>
-            </div>
+</div>
