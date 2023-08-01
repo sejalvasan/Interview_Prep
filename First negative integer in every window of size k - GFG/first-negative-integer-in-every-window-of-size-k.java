@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.*;
@@ -36,6 +36,7 @@ class GFG {
 	}
 }
 
+
 // } Driver Code Ends
 
 
@@ -46,34 +47,30 @@ class Compute {
     
     public long[] printFirstNegativeInteger(long A[], int N, int K)
     {
-        long[]ans = new long[N-K+1];
-        int i=0, j=0;
+        long arr[] = new long[N-K+1];
         Queue<Long> q = new LinkedList<>();
         
-        while(j<N){
-          if(A[j]<0)
-          q.add(A[j]);
-          
-          if(j-i+1<K)
-          j++;
-          
-          else if(j-i+1==K){
-              if(q.isEmpty())
-              ans[i]=0;
-              
-              else if(q.peek()==A[i])
-              {
-                  ans[i]=q.peek();
-                  q.remove();
-              }
-              else
-              ans[i]=q.peek();
-              
-              i++;
-              j++;
-          }
-        }
-        return ans;
+        int i=0, j=0;
         
+        while(j<N){
+            if(A[j]<0)
+            q.add(A[j]);
+            
+            if(j-i+1==K){
+                if(q.isEmpty())
+                arr[i]=0;
+                else if(q.peek()==A[i])
+                {
+                    arr[i] = q.peek();
+                    q.remove();
+                }else{
+                    arr[i]=q.peek();
+                }
+                
+                i++;
+            }
+            j++;
+        }
+        return arr;
     }
 }
