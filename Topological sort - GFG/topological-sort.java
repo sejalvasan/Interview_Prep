@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -15,7 +15,7 @@ class Main {
             int edg = Integer.parseInt(st[0]);
             int nov = Integer.parseInt(st[1]);
 
-            for (int i = 0; i < nov + 1; i++)
+            for (int i = 0; i < nov; i++)
                 list.add(i, new ArrayList<Integer>());
 
             int p = 0;
@@ -51,6 +51,7 @@ class Main {
         return true;
     }
 }
+
 // } Driver Code Ends
 
 
@@ -63,11 +64,12 @@ class Solution
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
         // add your code here
-        Queue<Integer> q = new LinkedList<>();
+        int[]topo = new int[V];
         int[]indegree = new int[V];
+        Queue<Integer> q = new LinkedList<>();
         
         for(int i=0;i<V;i++){
-            for(Integer it:adj.get(i))
+            for(Integer it: adj.get(i))
             indegree[it]++;
         }
         
@@ -76,50 +78,20 @@ class Solution
             q.add(i);
         }
         
-        
-        int[]topo = new int[V];
-        int idx =0;
+        int idx = 0;
         
         while(!q.isEmpty()){
-         Integer a = q.poll();
-        topo[idx++]=a;
-        
-        
-        for(Integer it: adj.get(a)){
-        indegree[it]--;
-        if(indegree[it]==0)
-        q.add(it);
+            int node = q.remove();
+            topo[idx]= node;
+            idx++;
+            
+            for(Integer it: adj.get(node)){
+                indegree[it]--;
+                if(indegree[it]==0)
+                q.add(it);
+            }
         }
-        }
+        
         return topo;
     }
 }
-
-//  Stack<Integer> st = new Stack<>();
-//         boolean[]vis = new boolean[V];
-//         for(int i=0;i<V;i++){
-//             if(vis[i]==false)
-//             dfs(adj,i,st,vis);
-//         }
-//         int[]ans = new int[V];
-//         int j=0;
-//         while(!st.isEmpty()){
-//           ans[j] = st.pop();
-//             j++;
-//         }
-//         return ans;
-//     }
-    
-//     public static void dfs(ArrayList<ArrayList<Integer>>adj, int node, Stack<Integer> st, boolean[]vis){
-//         vis[node]=true;
-        
-//         for(Integer it: adj.get(node)){
-//             if(vis[it]==false)
-//             {
-//                 dfs(adj,it,st,vis);
-//             }
-//         }
-//         st.add(node);
-//     }
-// }
-
