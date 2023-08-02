@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -12,7 +12,7 @@ class DriverClass {
             ArrayList<ArrayList<Integer>> list = new ArrayList<>();
             int V = sc.nextInt();
             int E = sc.nextInt();
-            for (int i = 0; i < V + 1; i++)
+            for (int i = 0; i < V; i++)
                 list.add(i, new ArrayList<Integer>());
             for (int i = 0; i < E; i++) {
                 int u = sc.nextInt();
@@ -25,7 +25,8 @@ class DriverClass {
                 System.out.println("0");
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 /*Complete the function below*/
@@ -34,30 +35,32 @@ class Solution {
     // Function to detect cycle in a directed graph.
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
         // code here
-        int[]vis = new int[V];
-        int[]dfsvis = new int[V];
+        int[]indegree = new int[V];
+        Queue<Integer> q = new LinkedList<>();
+        
         for(int i=0;i<V;i++){
-            if(checkForCycle(adj,i,vis,dfsvis))
-            return true;
+            for(Integer it: adj.get(i))
+            indegree[it]++;
         }
         
-        return false;
-    }
-    
-    public static boolean checkForCycle(ArrayList<ArrayList<Integer>> adj,
-    int node,int[]vis, int[]dfsvis){
-        vis[node]=1;
-        dfsvis[node]=1;
-        
-        for(Integer it:adj.get(node)){
-            if(vis[it]==0)
-            {
-                if(checkForCycle(adj,it,vis,dfsvis)==true)
-                return true;
-            }else if(dfsvis[it]==1)
-            return true;
+        for(int i=0;i<V;i++){
+            if(indegree[i]==0)
+            q.add(i);
         }
-        dfsvis[node]=0;
-        return false;
+        
+        int idx = 0;
+        
+        while(!q.isEmpty()){
+            int node = q.remove();
+            idx++;
+            
+            for(Integer it: adj.get(node)){
+                indegree[it]--;
+                if(indegree[it]==0)
+                q.add(it);
+            }
+        }
+        
+        return idx==V? false: true;
     }
 }
