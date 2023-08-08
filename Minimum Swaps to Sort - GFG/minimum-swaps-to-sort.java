@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -21,10 +21,8 @@ class GFG
             System.out.println(ans);
        }
     }
-}// } Driver Code Ends
-
-
-
+}
+// } Driver Code Ends
 
 // Back-end Complete function Template for JAVA
 
@@ -90,4 +88,4 @@ class Solution
         }
         return ans;
     }
-}
+}   
