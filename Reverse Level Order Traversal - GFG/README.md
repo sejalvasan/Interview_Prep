@@ -1,7 +1,6 @@
 # Reverse Level Order Traversal
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree of size N, find its reverse level order traversal. ie- the traversal must begin from the last level. </span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary tree of size N, find its reverse level order traversal. ie- the traversal must begin from the last level. </span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -41,5 +40,4 @@ You dont need to read input or print anything. Complete the function <strong>rev
 <p><br>
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ N ≤ 10^4</span></p>
- <p></p>
-            </div>
+</div>
