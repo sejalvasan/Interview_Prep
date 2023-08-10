@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.*;
@@ -104,7 +104,8 @@ public class GFG2
             
         }
 	}
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -126,31 +127,42 @@ class GFG
 	ArrayList<Integer> zigZagTraversal(Node root)
 	{
 	    //Add your code here.
-	    ArrayList<Integer> ans = new ArrayList<>();
-	   Stack<Node> ms = new Stack<>();
-	   Stack<Node> ss = new Stack<>();
-	   int level =0;
-	   ms.add(root);
-	   
-	   while(!ms.isEmpty()){
-	       Node curr = ms.pop();
-	       ans.add(curr.data);
-	       
-	       if(level%2==0){
-	           if(curr.left!=null) ss.add(curr.left);
-	           if(curr.right!=null) ss.add(curr.right);
-	       }else{
-	             if(curr.right!=null) ss.add(curr.right);
-	             if(curr.left!=null) ss.add(curr.left);
-	       }
-	       
-	       if(ms.size()==0){
-	           ms = ss;
-	           ss = new Stack<>();
-	           level++;
-	       }
-	   }
-	   
-	   return ans;
+	    ArrayList<Integer> l = new ArrayList<>();
+	    Stack<Node> ms = new Stack<>();
+	    Stack<Node> ss = new Stack<>();
+	    int level = 0;
+	    
+	    if(root==null)
+	    return l;
+	    
+	    ms.add(root);
+	    
+	    while(!ms.isEmpty()){
+	        Node n = ms.pop();
+	        l.add(n.data);
+	        
+	        if(level%2==0){
+	            if(n.left!=null)
+	            ss.add(n.left);
+	            
+	            if(n.right!=null)
+	            ss.add(n.right);
+	        }
+	        else{
+	            if(n.right!=null)
+	            ss.add(n.right);
+	            
+	            if(n.left!=null)
+	            ss.add(n.left);
+	        }
+	        
+	           if(ms.isEmpty()){
+	            ms = ss;
+	            ss=new Stack<>();
+	            level++;
+	           }
+	    }
+	    
+	    return l;
 	}
 }
