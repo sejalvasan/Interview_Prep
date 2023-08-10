@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.LinkedList; 
@@ -99,7 +99,8 @@ class GFG {
             t--;
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -123,13 +124,11 @@ class Solution {
     int height(Node node) 
     {
         // code here 
-        if(node == null)
+        if(node==null)
         return 0;
         
         int lheight = height(node.left);
         int rheight = height(node.right);
-        int height = Math.max(lheight,rheight)+1;
-        return height;
-        
+        return Math.max(lheight, rheight)+1;
     }
 }
