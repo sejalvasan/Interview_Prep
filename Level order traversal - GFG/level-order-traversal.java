@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.LinkedList; 
@@ -105,6 +105,7 @@ class GfG {
    
 }
 
+
 // } Driver Code Ends
 
 
@@ -128,22 +129,29 @@ class Solution
     //Function to return the level order traversal of a tree.
     static ArrayList <Integer> levelOrder(Node node) 
     {
-        // Your code here;
-        ArrayList<Integer> ans = new ArrayList<>();
-        if(node == null)
-        return ans;
+        // Your code here
+        ArrayList<Integer> l = new ArrayList<>();
+        
+          if(node==null)
+          return l;
+          
         Queue<Node> q = new LinkedList<>();
+        
         q.add(node);
         
         while(!q.isEmpty()){
-            Node rem = q.remove();
-            ans.add(rem.data);
-            if(rem.left!=null)
-            q.add(rem.left);
-            if(rem.right!=null)
-            q.add(rem.right);
+            Node n = q.remove();
+            l.add(n.data);
+            
+            if(n.left!=null)
+            q.add(n.left);
+            
+            if(n.right!=null)
+            q.add(n.right);
         }
-        return ans;
+        
+        return l;
+        
     }
 }
 
