@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 
@@ -107,6 +107,7 @@ class GfG {
 	}
 }
 
+
 // } Driver Code Ends
 
 
@@ -132,20 +133,19 @@ class Solution{
     ArrayList<Integer> rightView(Node node) {
         //add code here.
         ArrayList<Integer> ans = new ArrayList<>();
-        right(ans,node,0);
+        right(node, ans, 0);
         return ans;
     }
     
-    public static void right(ArrayList<Integer> ans, Node node, int curDepth){
-        if(node ==null)
+    public void right(Node node, ArrayList<Integer> ans, int curDepth){
+        if(node==null)
         return;
         
-        if(ans.size()==curDepth){
-            ans.add(node.data);
-        }
-        right(ans,node.right,curDepth+1);
-        right(ans,node.left,curDepth+1);
-
+        if(ans.size()==curDepth)
+        ans.add(node.data);
+        
+        right(node.right, ans, curDepth+1);
+        right(node.left, ans, curDepth+1);
     }
 }
 
