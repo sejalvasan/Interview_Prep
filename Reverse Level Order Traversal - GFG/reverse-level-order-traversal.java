@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.LinkedList; 
@@ -105,6 +105,7 @@ class GFG {
 
 
  
+
 // } Driver Code Ends
 
 
@@ -128,23 +129,28 @@ class Tree
     public ArrayList<Integer> reverseLevelOrder(Node node) 
     {
         // code here
-    
+   ArrayList<Integer> l = new ArrayList<>();
+        
+          if(node==null)
+          return l;
+          
         Queue<Node> q = new LinkedList<>();
-        ArrayList<Integer> ans = new ArrayList<>();
-        if(node==null)
-        return ans;
+        
         q.add(node);
         
         while(!q.isEmpty()){
-            Node rem = q.remove();
-            ans.add(rem.data);
-            if(rem.right!=null)
-            q.add(rem.right);
-            if(rem.left!=null)
-            q.add(rem.left);
+            Node n = q.remove();
+            l.add(n.data);
+            
+            if(n.right!=null)
+            q.add(n.right);
+            
+            if(n.left!=null)
+            q.add(n.left);
         }
         
-        Collections.reverse(ans);
-        return ans;
+        Collections.reverse(l);
+        return l;
+        
     }
-}      
+}
