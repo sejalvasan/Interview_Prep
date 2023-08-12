@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.LinkedList; 
@@ -106,7 +106,8 @@ class GfG {
                 t--;
             }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -125,63 +126,21 @@ class Node{
 class Solution
 {
     // returns the inorder successor of the Node x in BST (rooted at 'root')
-	public Node inorderSuccessor(Node root,Node k)
+	public Node inorderSuccessor(Node root,Node x)
          {
           //add code here.
-        // boolean found = false;
-        // Node succ =null;
-        // Node curr = root;
-        
-        // while(curr!=null){
-        //     if(curr.left==null){
-        //      //agle node tak found true ho jaayega
-        //      if(found==true){
-        //     succ=curr;
-        //     break;
-        //      }
-        //      if(curr ==x)
-        //          found =true;
-            
-        //      curr = curr.right;
-        //     }else{
-        //         Node iop = curr.left;
-        //         while(iop.right!=null && iop.right!=curr)
-        //         iop=iop.right;
-                
-        //         if(iop.right==null){
-        //             iop.right = curr;
-        //             curr=curr.left;
-        //         }else{
-                    
-        //              if(found==true){
-        //               succ=curr;
-        //                   break;
-        //              }
-        //      if(curr==x)
-        //          found =true;
-                    
-        //             iop.right=null;
-        //             curr=curr.right;
-        //         }
-        //     }
-        // }
-        // return succ;
-        //  }
-        
-        Node succ = null;
-        
-        if(root==null)
-        return null;
-        
-        while(root!=null){
-            if(root.data<=k.data)
-            root = root.right;
-            else{
+          Node succ = null;
+          
+          while(root!=null){
+            if(root.data<=x.data)
+            {
+                root = root.right;
+            }else{
                 succ = root;
                 root = root.left;
             }
-        }
-        
-        return succ;
+          }
+          
+          return succ;
          }
 }
