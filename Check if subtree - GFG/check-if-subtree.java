@@ -127,29 +127,67 @@ class GfG {
 }*/
 
 class Solution {
-    public static boolean isSubtree(Node T, Node S) {
+    public static boolean isSubtree(Node s, Node t) {
         // add code here.
         //n^2 solution
-        if(S==null)
-        return true;
+    //     if(S==null)
+    //     return true;
         
-        if(T==null)
-        return false;
+    //     if(T==null)
+    //     return false;
         
-        if(isSame(T,S))
-        return true;
+    //     if(isSame(T,S))
+    //     return true;
         
-        return (isSubtree(T.left,S) || isSubtree(T.right, S));
-    }
+    //     return (isSubtree(T.left,S) || isSubtree(T.right, S));
+    // }
     
-    public static boolean isSame(Node T, Node S){
-        if(S==null && T==null)
-        return true;
+    // public static boolean isSame(Node T, Node S){
+    //     if(S==null && T==null)
+    //     return true;
         
-        if(S==null || T==null)
+    //     if(S==null || T==null)
+    //     return false;
+        
+    //     return (S.data==T.data && isSame(T.left, S.left) && 
+    //     isSame(T.right, S.right));
+    
+    StringBuilder sbs = new StringBuilder();
+    preOrder(s, sbs);
+    StringBuilder sbt = new StringBuilder();
+    preOrder(t, sbt);
+  
+
+        if(sbs.toString().contains(sbt.toString())==false)
         return false;
-        
-        return (S.data==T.data && isSame(T.left, S.left) && 
-        isSame(T.right, S.right));
-    }
+       
+        StringBuilder sss = new StringBuilder();
+        inOrder(s, sss);
+        StringBuilder sbb = new StringBuilder();
+        inOrder(t, sbb);
+       
+      // inOrder(t, sbt);
+         if(sss.toString().contains(sbb.toString())==false)
+        return false;
+      //return sss.toString().contains(sbb.toString());
+       return true;
 }
+
+public static StringBuilder preOrder(Node root, StringBuilder sb){
+    if(root==null)
+        return sb.append("#");
+    sb.append(root.data);
+    preOrder(root.left, sb);
+    preOrder(root.right, sb);
+    return sb;
+}
+    
+    public static StringBuilder inOrder(Node root, StringBuilder sb){
+    if(root==null)
+        return sb.append("#");
+    inOrder(root.left, sb);
+    sb.append(root.data);
+    inOrder(root.right, sb);
+    return sb;
+}
+    }
