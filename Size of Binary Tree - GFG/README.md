@@ -1,7 +1,6 @@
 # Size of Binary Tree
 ## Easy
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree of size <strong>N</strong>, you have to count number of nodes in it. For example, count of nodes in below tree is 4.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary tree of size <strong>N</strong>, you have to count number of nodes in it. For example, count of nodes in below tree is 4.</span></p>
 
 <p><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; 1<br>
 &nbsp; &nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \<br>
@@ -18,7 +17,7 @@
 	</li>
 	<li dir="ltr">
 	<p dir="ltr"><span style="font-size:18px">For example:<br>
-	<img alt="" src="https://media.geeksforgeeks.org/wp-content/uploads/20200124141533/Untitled-Diagram65.jpg" style="height:251px; width:500px" class="img-responsive"><br>
+	<img alt="" src="https://media.geeksforgeeks.org/wp-content/uploads/20200124141533/Untitled-Diagram65.jpg" style="height:251px; width:500px"><br>
 	For the above tree, the string will be: 1 2 3 N N 4 6 N 5 N N 7 N</span></p>
 	</li>
 </ol>
@@ -51,5 +50,4 @@ Testcase 2: </strong>Given Tree is :</span><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1&nbsp; &nbsp; 3&nbsp; &nbsp; &nbsp; &nbsp;6<br>
 There are six nodes in the tree .<br>
 &nbsp;</span></p>
- <p></p>
-            </div>
+</div>
