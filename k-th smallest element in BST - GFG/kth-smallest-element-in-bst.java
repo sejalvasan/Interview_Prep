@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // Initial Template for Java
 
 /*package whatever //do not write package name here */
@@ -84,6 +84,7 @@ class GFG {
         }
     }
 }
+
 // } Driver Code Ends
 
 
@@ -105,40 +106,39 @@ class Solution {
     // Return the Kth smallest element in the given BST
     public int KthSmallestElement(Node root, int K) {
         // Write your code here
-        if(root == null)
-        return 0;
-        int count =0;
+        int k = 0;
+        Node cur = root;
         
-        while(root!=null){
-            if(root.left==null){
-                //work
-                count++;
-                if(count == K)
-                return root.data;
+        while(cur!=null){
+            if(cur.left==null){
+                k++;
+                if(k==K)
+                return cur.data;
                 
-                root = root.right;
+                cur = cur.right;
             }else{
-                Node iop = root.left;
+                Node prev = cur.left;
                 
-                while(iop.right!=null && iop.right!=root)
-                iop = iop.right;
+                while(prev.right!=null && prev.right!=cur)
+                prev = prev.right;
                 
-                if(iop.right==null)
-                {
-                    iop.right = root;
-                    root = root.left;
+                if(prev.right==null){
+                    prev.right = cur;
+                    cur = cur.left;
                 }
                 
-                if(iop.right==root){
-                    //work
-                    count++;
-                    if(count==K)
-                    return root.data;
+                if(prev.right==cur){
+                    prev.right = null;
                     
-                    root = root.right;
+                    k++;
+                    if(k==K)
+                    return cur.data;
+                    
+                    cur = cur.right;
                 }
             }
         }
+        
         return -1;
     }
 }
