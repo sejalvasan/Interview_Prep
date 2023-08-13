@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // Initial Template for Java
 
 import java.util.LinkedList;
@@ -98,25 +98,33 @@ class GfG {
         }
     }
 }
+
 // } Driver Code Ends
 
 
+
+
+/*
+class Node {
+    int data;
+    Node left;
+    Node right;
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+*/
 class Tree {
     // Function to find the minimum element in the given BST.
     int minValue(Node node) {
-        
-        if(node == null)
+        if(node==null)
         return -1;
         
-        while(node.left!=null){
-            node =  node.left;
-        }
-        if(node.left==null && node.right ==null)
-        return node.data;
+        while(node.left!=null)
+        node = node.left;
         
-        if(node.left==null)
         return node.data;
-        
-        return -1;
     }
 }
