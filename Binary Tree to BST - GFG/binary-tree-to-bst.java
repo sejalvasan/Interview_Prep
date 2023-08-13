@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.LinkedList; 
@@ -97,6 +97,7 @@ class GFG {
     }
 }
 
+
 // } Driver Code Ends
 
 
@@ -113,49 +114,44 @@ class Node
     }
 } */
 
+
 class Solution
 {
-    void arrayToBST(int arr[], Node root, int []index)
+    // The given root is the root of the Binary Tree
+    // Return the root of the generated BST
+    ArrayList<Integer> list = new ArrayList<>();
+    
+    Node binaryTreeToBST(Node root)
     {
-        if(root == null)
-            return ;
-        
-        arrayToBST(arr, root.left, index);
-        root.data = arr[index[0]];
-        index[0]++;
-        arrayToBST(arr, root.right, index);
+       // Your code here
+       inorderBT(root);
+       Collections.sort(list);
+       inorderBST(list,root);
+       
+       return root;
     }
-    void storeInorder(Node node, int inorder[], int []index)
-    {
-        //int index_ptr = 0;
-        if(node == null)
-            return ;
+    
+    public void inorderBT(Node root){
+        if(root==null)
+        return;
         
-        storeInorder(node.left, inorder, index);
-        inorder[index[0]] = node.data;
-        index[0]++;
-        storeInorder(node.right, inorder, index);
+        inorderBT(root.left);
+        list.add(root.data);
+        inorderBT(root.right);
     }
-    int countNodes(Node root)
-    {
-        if(root == null)
-            return 0;
-        return countNodes(root.left) + countNodes(root.right)+1;
-    }
-    Node binaryTreeToBST (Node root)
-    {
-        if(root == null)
-            return null;
-        
-        int n = countNodes(root);
-        
-        int arr[] = new int[n];
-        int index[]=new int[1];
-        storeInorder(root, arr,index);
-        
-        Arrays.sort(arr);
-        index[0] = 0;
-        arrayToBST(arr, root, index);
-        return root;
+    
+    int index = 0;
+    
+    public void inorderBST(ArrayList<Integer> list, Node root){
+    if (root == null)
+            return;
+ 
+        inorderBST(list, root.left);
+ 
+        root.data = list.get(index);
+        index++;
+ 
+        inorderBST(list, root.right);
     }
 }
+ 
