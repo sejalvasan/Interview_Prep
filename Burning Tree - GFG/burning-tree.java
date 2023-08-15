@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 
@@ -107,6 +107,7 @@ class GfG {
 }
 
 
+
 // } Driver Code Ends
 
 
@@ -126,65 +127,74 @@ class Solution
     	}
     }*/
     
-     public static int minTime(Node root, int target) 
+    public static int minTime(Node root, int target) 
     {
         // Your code goes here
-        HashMap<Node, Node> mpp = new HashMap<>();
-        Node dest = bfsToMapParents(root, mpp, target);
-        int maxi = findMaxDistance(mpp, dest);
-        return maxi;
+        HashMap<Node, Node> parent = new HashMap<>();
+        Node destination = makeParents(parent, root, target);
+        return findDis(parent, destination);
     }
     
-    private static Node bfsToMapParents(Node root, HashMap<Node,Node> mpp, int start) {
-        Queue<Node> q = new LinkedList<>();
-        q.offer(root);
-        Node res = new Node(-1);
-        while(!q.isEmpty()) {
-            Node node = q.poll();
-            if(node.data == start) res = node;
-            if(node.left != null) {
-                mpp.put(node.left, node);
-                q.offer(node.left);
-            }
-            if(node.right != null) {
-                mpp.put(node.right, node);
-                q.offer(node.right);
-            }
-        }
-        return res;
-    }
-    private static int findMaxDistance(HashMap<Node,Node> mpp, Node target) {
-        Queue<Node> q = new LinkedList<>();
-        q.offer(target);
-        HashMap<Node,Integer> vis = new HashMap<>();
-        vis.put(target, 1);
-        int maxi = 0;
+    public static Node makeParents(HashMap<Node, Node> parent, Node root, int target){
         
-        while(!q.isEmpty()) {
-            int sz = q.size();
-            int fl = 0;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        Node result = new Node(-1);
+        
+        while(!q.isEmpty()){
+            Node node = q.remove();
+            if(node.data == target) result = node;
             
-            for(int i = 0;i<sz;i++) {
-                Node node = q.poll();
-                if(node.left != null && vis.get(node.left) == null) {
-                    fl = 1;
-                    vis.put(node.left, 1);
-                    q.offer(node.left);
+            if(node.left!=null){
+            parent.put(node.left, node);
+            q.add(node.left);
+            }
+            
+            if(node.right!=null){
+                parent.put(node.right, node);
+                q.add(node.right);
+            }
+        }
+        
+        return result;
+    }
+    
+    public static int findDis(HashMap<Node, Node>parent, Node target){
+        Queue<Node> q = new LinkedList<>();
+        HashSet<Node> set = new HashSet<>();
+        
+        q.add(target);
+        set.add(target);
+        int maxDis = 0;
+        
+        while(!q.isEmpty()){
+            int flag = 0;
+            int size = q.size();
+            while(size-->0){
+                Node node = q.remove();
+                
+                if(node.left!=null && set.contains(node.left)==false){
+                    q.add(node.left);
+                    set.add(node.left);
+                    flag = 1;
                 }
-                if(node.right != null && vis.get(node.right) == null) {
-                    fl = 1;
-                    vis.put(node.right, 1);
-                    q.offer(node.right);
+                
+                if(node.right!=null && set.contains(node.right)==false){
+                    q.add(node.right);
+                    set.add(node.right);
+                    flag = 1;
                 }
-
-                if(mpp.get(node) != null && vis.get(mpp.get(node)) == null) {
-                    fl = 1;
-                    vis.put(mpp.get(node), 1);
-                    q.offer(mpp.get(node));
+                
+                if(parent.get(node)!=null && set.contains(parent.get(node))==false){
+                    q.add(parent.get(node));
+                    set.add(parent.get(node));
+                    flag = 1;
                 }
             }
-            if(fl == 1) maxi++;
+            if(flag == 1)
+            maxDis++;
         }
-        return maxi;
+        
+        return maxDis;
     }
 }
