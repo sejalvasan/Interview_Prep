@@ -1,7 +1,7 @@
 # Burning Tree
-## Hard 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree and a&nbsp;node called target. Find the minimum time required to burn the complete binary tree if the target is set on fire.&nbsp;It is known that in 1 second all nodes connected to a given node get burned. That is its left child, right child, and parent.</span></p>
+## Hard
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary tree and a&nbsp;<strong>node data</strong> called <strong>target</strong>. Find the minimum time required to burn the complete binary tree if the target is set on fire.&nbsp;It is known that in 1 second all nodes connected to a given node get burned. That is its left child, right child, and parent.<br>
+<strong>Note:</strong> The tree contains unique values.</span></p>
 
 <p><br>
 <strong><span style="font-size:18px">Example 1:</span></strong></p>
@@ -55,5 +55,4 @@ You don't need to read input or print anything. Complete the function <strong>mi
 <p><br>
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ N ≤ 10<sup>4</sup></span></p>
- <p></p>
-            </div>
+</div>
