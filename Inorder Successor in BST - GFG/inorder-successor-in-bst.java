@@ -129,16 +129,18 @@ class Solution
 	public Node inorderSuccessor(Node root,Node x)
          {
           //add code here.
+          if(root==null)
+          return null;
+          
           Node succ = null;
           
           while(root!=null){
-            if(root.data<=x.data)
-            {
-                root = root.right;
-            }else{
-                succ = root;
-                root = root.left;
-            }
+              if(root.data<=x.data){
+                  root=root.right;
+              }else{
+                  succ = root;
+                  root=root.left;
+              }
           }
           
           return succ;
