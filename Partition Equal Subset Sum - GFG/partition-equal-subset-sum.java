@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // Initial Template for Java
 
 import java.io.*;
@@ -24,7 +24,8 @@ class GFG{
                 System.out.println("NO");
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 // User function Template for Java
@@ -33,39 +34,48 @@ class Solution{
     static int equalPartition(int N, int arr[])
     {
         // code here
-        int sum=0;
-        for(int i=0;i<N;i++)
-        sum+=arr[i];
+        int sum = 0;
         
-        if(sum%2!=0){
-            return 0;
+        for(int i=0;i<N;i++){
+            sum+=arr[i];
         }
         
-        boolean ans =targetsumsubet(N,arr, sum/2);
-        if(ans==true)
-        return 1;
-        else return 0;
+        if(sum%2!=0)
+        return 0;
+        
+        boolean ans = isSubsetSum(N, arr, sum/2);
+        if(ans==true) return 1;
+        
+        return 0;
     }
     
-    public static boolean targetsumsubet(int n,int[]arr,int target){
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
         
-         boolean dp[][]=new boolean[n+1][target+1];
-         
-       for (int i = 0; i <n + 1; i++) {
-        for (int j = 0; j < target + 1; j++) {
-            if (j == 0) 
-             dp[i][j] = true;
+     boolean[][] t = new boolean[N + 1][sum + 1];
+    // fill the table initially with true and false
+    for (int i = 0; i <N + 1; i++) {
+      for (int j = 0; j < sum + 1; j++) {
+        if (i == 0) {
+          t[i][j] = false;
+        }
+        if (j == 0) {
+          t[i][j] = true;
         }
       }
-        for(int i=1;i<n+1;i++){
-            for(int j=1;j<target+1;j++){
-                
-                if(arr[i-1]<=j)
-                dp[i][j]=dp[i-1][j-arr[i-1]]||dp[i-1][j];
-                else
-                dp[i][j]=dp[i-1][j];
-            }
-        }
-        return dp[n][target];
     }
+
+    for (int i = 1; i < N + 1; i++) {
+      for (int j = 1; j < sum + 1; j++) {
+        if (arr[i - 1] <= j) {
+          t[i][j] = t[i-1][j-arr[i - 1]]||
+              t[i-1][j];
+        } else {
+          t[i][j] = t[i-1][j];
+        }
+      }
+    }
+    return t[N][sum];
+  }
+    
 }
