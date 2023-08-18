@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.io.*;
@@ -23,35 +23,30 @@ class GFG
             System.out.println(ob.longestCommonSubstr(S1, S2, n, m));
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
 
 class Solution{
-    int longestCommonSubstr(String s1, String s2, int m, int n){
+    int longestCommonSubstr(String S1, String S2, int n, int m){
         // code here
-    char[] X=s1.toCharArray();
-    char[] Y=s2.toCharArray();
-    
-      int L[][] = new int[m+1][n+1];
-      int max = 0;
- 
-    /* Following steps build L[m+1][n+1] in bottom up fashion. Note
-        that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1] */
-    for (int i=0; i<=m; i++)
-    {
-    for (int j=0; j<=n; j++)
-    {
-        if (i == 0 || j == 0)
-            L[i][j] = 0;
-        else if (X[i-1] == Y[j-1])
-            L[i][j] = L[i-1][j-1] + 1;
-            
-            if(max<L[i][j])
-            max = L[i][j];
-     }
+        int[][]dp = new int[n+1][m+1];
+        int max = 0;
+        
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                
+                if(S1.charAt(i-1)==S2.charAt(j-1))
+                dp[i][j]= 1+ dp[i-1][j-1];
+                
+                else dp[i][j]=0;
+                
+                max = Math.max(max, dp[i][j]);
+            }
+        }
+        
+        return max;
     }
-   return max;
- }
 }
