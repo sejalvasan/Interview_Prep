@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 /*package whatever //do not write package name here */
@@ -31,7 +31,8 @@ class GFG {
 
 
        
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -41,10 +42,11 @@ class Solution
     //Function to find length of shortest common supersequence of two strings.
     public static int shortestCommonSupersequence(String s1,String s2,int m,int n)
     {
+ 
     char[] X=s1.toCharArray();
     char[] Y=s2.toCharArray();
     
-      int L[][] = new int[m+1][n+1];
+    int L[][] = new int[m+1][n+1];
  
     /* Following steps build L[m+1][n+1] in bottom up fashion. Note
         that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1] */
@@ -58,8 +60,10 @@ class Solution
             L[i][j] = L[i-1][j-1] + 1;
         else
             L[i][j] = Math.max(L[i-1][j], L[i][j-1]);
+     }
     }
+  
+    return (m+n - L[m][n]);
+       
     }
-   return (m+n)-L[m][n];
- }
 }
