@@ -1,7 +1,6 @@
 # Check for subsequence
 ## Easy
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given two strings A and B, find if A is a subsequence of B.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given two strings A and B, find if A is a subsequence of B.</span></p>
 
 <p><strong><span style="font-size:18px">Example 1:</span></strong></p>
 
@@ -38,5 +37,4 @@ You dont need to read input or print anything. Complete the function <strong>isS
 1&lt;= |A|,|B| &lt;=10<sup>4</sup></span></p>
 
 <p>&nbsp;</p>
- <p></p>
-            </div>
+</div>
