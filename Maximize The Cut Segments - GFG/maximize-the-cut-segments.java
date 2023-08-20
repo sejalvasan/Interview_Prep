@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.*;
@@ -35,6 +35,7 @@ class Driver
         }
     }
 }
+
 // } Driver Code Ends
 
 
@@ -44,32 +45,31 @@ class Driver
 class Solution
 {
     //Function to find the maximum number of cuts.
-    public int maximizeCuts(int l, int x, int y, int z)
+    public int maximizeCuts(int n, int x, int y, int z)
     {
        //Your code here
-       int[]dp = new int[l+1];
+       int[]dp = new int[n+1];
+       
        Arrays.fill(dp,-1);
        dp[0]=0;
-       
-       for(int i =0;i<=l;i++){
-           
+       int l =n;
+       for(int i=0;i<=n;i++){
            if(dp[i]==-1)
            continue;
            
            if(i+x<=l)
-           dp[i+x]=Math.max(dp[i+x],dp[i]+1);
+           dp[i+x] = Math.max(dp[i+x], dp[i]+1);
            
+            if(i+y<=l)
+           dp[i+y] = Math.max(dp[i+y], dp[i]+1);
            
-           if(i+y<=l)
-           dp[i+y]=Math.max(dp[i+y],dp[i]+1);
-           
-           
-           if(i+z<=l)
-           dp[i+z]=Math.max(dp[i+z],dp[i]+1);
+             if(i+z<=l)
+           dp[i+z] = Math.max(dp[i+z], dp[i]+1);
        }
-      if(dp[l]==-1)
-      return 0;
        
-       return dp[l];
+      if(dp[n]==-1)
+      dp[n]=0;
+      
+      return dp[n];
     }
 }
