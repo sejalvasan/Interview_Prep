@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.io.*;
@@ -16,7 +16,12 @@ class GFG {
             System.out.println(ob.maxSubstring(s));
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
+
+
+//User function Template for Java
+
 
 
 //User function Template for Java
