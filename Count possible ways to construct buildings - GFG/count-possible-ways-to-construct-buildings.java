@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.*;
@@ -19,6 +19,7 @@ class GFG
         }
     }
 }
+
 // } Driver Code Ends
 
 
@@ -28,24 +29,21 @@ class Solution
 {
     public int TotalWays(int N)
     {
-        // Code here
-        if (N == 1)
-            return 4;
-            
+    
         long mod = 1000000007;
         long space = 1;
         long build = 1;
         
         for(int i = 2;i<=N;i++){
           long  newSpace = (space + build)%mod;
-           long   newBuild = (space)%mod;
+          long   newBuild = (space)%mod;
            
            space = (newSpace)%mod;
            build = (newBuild)%mod;
         }
         
         long oneRoad = (space+build)%mod;
-        long twoRoad =(oneRoad*oneRoad)%mod;
+        long twoRoad = (oneRoad*oneRoad)%mod;
         return (int)(twoRoad);
     }
 }
