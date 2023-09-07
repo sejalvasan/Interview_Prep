@@ -64,12 +64,12 @@ class Solution
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
         // add your code here
-        int[]topo = new int[V];
         int[]indegree = new int[V];
+        int[]topo = new int[V];
         Queue<Integer> q = new LinkedList<>();
         
         for(int i=0;i<V;i++){
-            for(Integer it: adj.get(i))
+            for(Integer it:adj.get(i))
             indegree[it]++;
         }
         
@@ -81,11 +81,11 @@ class Solution
         int idx = 0;
         
         while(!q.isEmpty()){
-            int node = q.remove();
-            topo[idx]= node;
+            int rem = q.remove();
+            topo[idx] = rem;
             idx++;
             
-            for(Integer it: adj.get(node)){
+            for(int it:adj.get(rem)){
                 indegree[it]--;
                 if(indegree[it]==0)
                 q.add(it);
