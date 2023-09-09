@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 
@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.*;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function Template for Java
 
 
@@ -20,28 +20,29 @@ class Solution
 {
     long countTriplets(long arr[], int n,int sum)
     {
-           int x=0;
-        int count =0;
         Arrays.sort(arr);
-      for (int k =0;k<n-2;k++){
-        int i = k+1;
-              int j = n-1;
-              while(i<j){
-              x = (int)(arr[k]+arr[i]+arr[j]);
-              
-              if(x<sum){
-                 count +=(j-i);
-                 i++;
-              }else {
-                  j--;
-              }
-      }
+        long count =0L;
+        
+        for(int k=0;k<n-2;k++){
+            int i = k+1;
+            int j = n-1;
+            
+            while(i<j){
+                long sum1 = arr[k]+arr[i]+arr[j];
+                if(sum1<sum)
+                {
+                    count+=j-i;
+                    i++;
+                }else
+                j--;
+            }
+        }
+        return count;
     }
-    return count;
-}
 }
 
-// { Driver Code Starts.
+
+//{ Driver Code Starts.
 
 // Driver class
 class Array {
@@ -81,4 +82,5 @@ class Array {
 
 
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
