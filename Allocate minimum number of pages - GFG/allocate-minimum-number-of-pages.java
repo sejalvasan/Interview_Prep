@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 /*package whatever //do not write package name here */
@@ -25,56 +25,56 @@ class GFG {
 		    System.out.println(ob.findPages(a,n,m));
 		}
 	}
-}// } Driver Code Ends
-
-
-//User function Template for Java
+}
+// } Driver Code Ends
 
 class Solution 
 {
     //Function to find minimum number of pages.
-    public static int findPages(int[]A,int N,int M)
+    public static int findPages(int[]A,int N,int m)
     {
         //Your code here
+        if(m>N)
+        return -1;
+        
         int ans =0;
         int sum =0;
-        int min=A[0];
+        int max=A[0];
+        
         for(int i =0;i<N;i++){
             sum+=A[i];
-            min=Math.min(min,A[i]);
+            max=Math.max(max,A[i]);
         }
         
-        int lo = min;
-        int hi = sum;
+       int low = max;
+        int high = sum;
         
-        while(lo<=hi){
-            int mid = (lo+hi)/2;
-            
-            if(allocation(A,N,M,mid)){
-                ans =mid;
-                hi = mid-1;
-            }else
-            lo = mid+1;
-        }
-        return ans;
-    }
-    
-    public static boolean allocation(int[]arr, int books, int stu, int mid){
-        int curPage =0, allocatedStu =1;
-        for(int i =0;i<books;i++){
-            if(arr[i]>mid)
-            return false;
-            
-            if(arr[i]+curPage>mid){
-                allocatedStu++;
-                curPage = arr[i];
-                
-                if(allocatedStu>stu)
-                return false;
-            }else{
-                curPage+=arr[i];
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int students = countStudents(A, mid);
+            if (students > m) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
-        return true;
+        return low;
     }
-};
+    
+    public static int countStudents(int arr[], int pages) {
+        int n = arr.length; // size of array
+        int students = 1;
+        long pagesStudent = 0;
+        for (int i = 0; i < n; i++) {
+            if (pagesStudent + arr[i] <= pages) {
+                // add pages to current student
+                pagesStudent += arr[i];
+            } else {
+                // add pages to next student
+                students++;
+                pagesStudent = arr[i];
+            }
+        }
+        return students;
+    }
+}
