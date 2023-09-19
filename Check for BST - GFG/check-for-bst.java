@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 import java.util.LinkedList; 
 import java.util.Queue; 
@@ -106,51 +106,29 @@ class GfG {
 }
 
 
+
 // } Driver Code Ends
 
 
 //User function Template for Java
 
 
-public class Solution
+class Solution
 {
     //Function to check whether a Binary Tree is BST or not.
-    Node prev =null;
     boolean isBST(Node root)
     {
         // code here.
-        
-        while(root!=null){
-            if(root.left ==null){
-                //work 
-                if(prev!=null && prev.data>root.data)
-                return false;
-                prev = root;
-                
-                root=root.right;
-            }else{
-                Node iop = root.left;
-                
-                while(iop.right!=null && iop.right!=root){
-                    iop=iop.right;
-                }
-                
-                if(iop.right==null){
-                    iop.right = root;
-                    root = root.left;
-                }
-                
-                if(iop.right==root){
-                    //work
-                     if(prev!=null && prev.data>root.data)
-                        return false;
-                        prev = root;
-                    
-                    iop.right = null;
-                    root = root.right;
-                }
-            }
-        }
+        return check(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+    
+    boolean check(Node root, int min, int max){
+        if(root==null)
         return true;
+        
+        if(root.data<=min || root.data>=max)
+        return false;
+        
+        return check(root.left, min, root.data) && check(root.right, root.data, max);
     }
 }
