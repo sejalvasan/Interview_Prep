@@ -37,20 +37,23 @@ class Solution{
     static long maximumSumSubarray(int K, ArrayList<Integer> Arr,int N){
         // code here
         long sum = 0;
-        long max = 0;
-        
-        int i=0, j=0;
+        long ans = 0;
+        int i=0,j=0;
         
         while(j<N){
+            
             sum+=Arr.get(j);
-             if(j-i+1==K){
-                max = Math.max(max,sum);
+            
+            if(j-i+1<K)
+            j++;
+            else{
+                ans = Math.max(sum, ans);
                 sum-=Arr.get(i);
                 i++;
+                j++;
             }
-            j++;
         }
         
-        return max;
+        return ans;
     }
 }
