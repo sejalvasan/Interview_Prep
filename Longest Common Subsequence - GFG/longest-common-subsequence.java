@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -20,31 +20,34 @@ class GFG {
 		    System.out.println(obj.lcs(p, q, s1, s2));
 		}
 	}
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 class Solution
 {
     //Function to find the length of longest common subsequence in two strings.
-    static int lcs(int m, int n, String s1, String s2)
+    static int lcs(int x, int y, String s1, String s2)
     {
-     char[] X=s1.toCharArray();
-    char[] Y=s2.toCharArray();
-    
-      int L[][] = new int[m+1][n+1];
- 
-    /* Following steps build L[m+1][n+1] in bottom up fashion. Note
-        that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1] */
-    for (int i=1; i<=m; i++)
-    {
-    for (int j=1; j<=n; j++)
-    {
-          if (X[i-1] == Y[j-1])
-            L[i][j] = L[i-1][j-1] + 1;
-        else
-            L[i][j] = Math.max(L[i-1][j], L[i][j-1]);
+        // your code here
+        char[] s = s1.toCharArray();
+        char[] t = s2.toCharArray();
+        
+        int[][]dp = new int[x+1][y+1];
+        
+        for(int i=0;i<=x;i++){
+            for(int j=0;j<=y;j++){
+                if(i==0 || j==0)
+                dp[i][j]=0;
+                
+                else if(s[i-1] == t[j-1])
+                dp[i][j] = 1+dp[i-1][j-1];
+                
+                else 
+                dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+            }
+        }
+        
+        return dp[x][y];
     }
-    }
-   return L[m][n];
- }
 }
