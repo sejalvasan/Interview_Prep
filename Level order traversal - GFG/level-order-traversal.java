@@ -130,28 +130,23 @@ class Solution
     static ArrayList <Integer> levelOrder(Node node) 
     {
         // Your code here
-        ArrayList<Integer> l = new ArrayList<>();
-        
-          if(node==null)
-          return l;
-          
+        ArrayList<Integer> list = new ArrayList<>();
         Queue<Node> q = new LinkedList<>();
         
         q.add(node);
         
         while(!q.isEmpty()){
-            Node n = q.remove();
-            l.add(n.data);
+            Node rem = q.remove();
+            list.add(rem.data);
             
-            if(n.left!=null)
-            q.add(n.left);
+            if(rem.left!=null)
+            q.add(rem.left);
             
-            if(n.right!=null)
-            q.add(n.right);
+            if(rem.right!=null)
+            q.add(rem.right);
         }
         
-        return l;
-        
+        return list;
     }
 }
 
